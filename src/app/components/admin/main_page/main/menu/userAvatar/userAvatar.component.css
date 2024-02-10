@@ -1,0 +1,11 @@
+.user_avatar {
+  position: absolute;
+  top: 18%;
+  right: 8%;
+  width: fit-content;
+}
+.imgUser {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+}

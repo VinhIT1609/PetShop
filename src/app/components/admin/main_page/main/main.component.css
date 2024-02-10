@@ -1,0 +1,59 @@
+.background_admin {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: black;
+  z-index: -1;
+}
+.box_menu_field {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  background-color: rgb(73, 119, 227);
+}
+
+.logo {
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  height: 10%;
+  width: 90%;
+}
+.logo > img {
+  height: 200%;
+  border-radius: 10%;
+}
+
+.list_menu_admin {
+  position: absolute;
+  top: 25%;
+  left: 15%;
+}
+
+.btn_leave {
+  background-color: rgb(232, 72, 72);
+  position: absolute;
+  bottom: 3%;
+  width: 85%;
+  left: 6%;
+  height: 8%;
+  line-height: normal;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.btn_leave:hover {
+  transition: 0.5s;
+  background-color: #ec1e1e;
+}
+
+.btn_leave > .span_surround {
+  margin-left: 10%;
+}
+
+.master_page {
+  padding: 0%;
+}

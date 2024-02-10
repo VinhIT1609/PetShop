@@ -1,0 +1,26 @@
+<div class="modal_overlay">
+  <img [src]="imgPath" alt="">
+</div>
+<!-- form login -->
+
+<div class="modal_container">
+  <div class="login_form">
+    <h3 class="title_login"><b>Login</b></h3>
+    <input class="input_LoginForm" type="email" name="" id="" placeholder="Username ...">
+    <span class="checkUsername"></span>
+    <br>
+    <div class="d-flex">
+      <input class="input_LoginForm" [type]="pwType" name="" id="" placeholder="Password ... ">
+      <button class="show_password_icon material-symbols-outlined"
+        (click)="changeStatusPW(iconValue)">{{iconValue}}</button>
+    </div>
+    <button class="btn_login" type="button">LOGIN</button>
+    <br>
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <label class="form-check-label">Remember me</label>
+    </div>
+    <a class="forgot_pw" href="">Forgot password?</a>
+    <a class="sign_up" routerLink="/Signin" href="">SIGN UP</a>
+  </div>
+</div>

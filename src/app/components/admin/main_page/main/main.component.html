@@ -1,0 +1,24 @@
+<div class="background_admin"></div>
+<div class="container-fluid w-100 h-100">
+  <div class="row bg-black">
+    <div class="col-2 p-0 p-3 box_menu_field">
+      <div class="row logo">
+        <img [src]="imgPath" class="" alt="">
+      </div>
+      <div class="row list_menu_admin">
+        <app-menu></app-menu>
+      </div>
+      <div class="row">
+        <button (click)="navigateToHome()" class="d-flex rounded-pill h6 btn_leave">
+          <span class="d-flex span_surround">
+            <span class="material-symbols-outlined">door_open</span>
+            <span class="">LEAVE ADMIN</span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="col-10 text-white master_page">
+      <app-header_master></app-header_master>
+      <router-outlet></router-outlet>
+    </div>
+  </div>

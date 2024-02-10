@@ -1,0 +1,34 @@
+.header {
+  position: relative;
+  background-color: rgb(73, 119, 227);
+  align-items: center;
+}
+.btn_search {
+  background-color: rgb(208, 199, 211);
+}
+.search_box {
+  position: absolute;
+  top: 30%;
+  left: 13%;
+  width: 55%;
+  /* height: 50%; */
+  text-align: center;
+}
+
+.icon_box {
+  position: absolute;
+  align-items: center;
+  vertical-align: middle;
+  right: 5%;
+}
+.icon_box .material-symbols-outlined {
+  font-size: 40px;
+}
+.icon_box > .container > .mgl-25 {
+  height: 43px;
+}
+.icon_box > .container:hover {
+  color: black;
+  cursor: pointer;
+  transition: 0.5s;
+}

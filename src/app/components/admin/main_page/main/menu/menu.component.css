@@ -1,0 +1,17 @@
+.list-group-item {
+  margin-bottom: 10%;
+  width: 130%;
+  transition: 0.5s;
+}
+.list-group-item > span {
+  margin-left: 15%;
+}
+.iconMenu {
+  padding-right: 10%;
+}
+.list-group-item:hover {
+  background-color: #2fa4c8;
+  border-color: #2fa4c8;
+  transition: 0.5s;
+  cursor: pointer;
+}

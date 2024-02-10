@@ -1,0 +1,26 @@
+<div class="modal_overlay">
+  <img [src]="imgPath" alt="">
+</div>
+<!-- form login -->
+
+<div class="modal_container">
+  <div class="sign_form">
+    <h3 class="title_signin"><b>Sign in</b></h3>
+    <input class="input_SignForm" type="email" name="" id="" placeholder="Username ...">
+    <span class="checkUsername"></span>
+    <br>
+    <div class="d-flex">
+      <input class="input_SignForm" [type]="pwType" name="" id="" placeholder="Password ... ">
+      <button class="show_password_icon material-symbols-outlined"
+        (click)="changeStatusPW(iconValue)">{{iconValue}}</button>
+    </div>
+    <div class="d-flex">
+      <input class="input_SignForm" [type]=" pwType_CFPW" name="" id="" placeholder="Confirm password ... ">
+      <button class="show_password_icon_CFPW material-symbols-outlined"
+        (click)="changeStatusPW_CFPW(iconValue_CFPW)">{{iconValue_CFPW}}</button>
+    </div>
+    <button class="btn_sign" type="button">SIGN UP</button>
+    <br>
+    <a class="aha" routerLink="/Login">Already have accout?</a>
+  </div>
+</div>
