@@ -11,6 +11,7 @@ import { MasterReportComponent } from './components/admin/main_page/main/master_
 import { HomeComponent } from './components/user/homepage/home/home.component';
 import { LogInComponent } from './components/Login_Signin/log-in/log-in.component';
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
+import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
 
 const routes: Routes = [
   {
@@ -24,10 +25,11 @@ const routes: Routes = [
       { path: 'Report', component: MasterReportComponent },
     ],
   },
-  { path: '', redirectTo: 'Login', pathMatch: 'full' },
+  { path: '', redirectTo: 'Admin', pathMatch: 'full' },
   { path: 'MainPage', component: HomeComponent },
   { path: 'Login', component: LogInComponent },
-  { path: 'Signin', component: SingInComponent }
+  { path: 'Signin', component: SingInComponent },
+  { path: 'CbbCustom', component: ComboboxCustomComponent }
 
   // { path: '/Account', component: MasterAccountComponent }
 ];

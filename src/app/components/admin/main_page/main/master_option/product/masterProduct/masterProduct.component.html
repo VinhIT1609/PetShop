@@ -1,9 +1,6 @@
-<div class="row">
-  <div class="col-4"></div>
-  <div class="col-4 ms-5">
-    <span>
-      <h5>Master Product</h5>
-    </span>
-  </div>
-  <div class="col-4"></div>
+<h2>Product</h2>
+<div>
+  <cbb-custom [dataSourceChild]="dataSource" [displayName]="'tensp'" [value]="'id'" [(outputItem)]="itemCbb['id']"
+    [placeholder]="'Select item ...'"></cbb-custom>
+  <!-- <div>{{itemCbb.id ?? ''}}</div> -->
 </div>

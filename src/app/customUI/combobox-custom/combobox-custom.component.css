@@ -1,0 +1,71 @@
+.combobox_custom {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  width: 9rem;
+  height: 2rem;
+  background-color: #eee;
+  cursor: pointer;
+}
+.cbb_content {
+  position: relative;
+  display: flex;
+}
+.content {
+  position: absolute;
+  top: 0.2rem;
+  left: 0.5rem;
+}
+.expand_arrow {
+  position: absolute;
+  right: 0.3rem;
+  top: 0.2rem;
+}
+.modal_cbb {
+  position: relative;
+  left: 0.5rem;
+  display: none;
+  width: 8%;
+  height: fit-content;
+  background-color: red;
+  animation: dropdown 0.3s ease forwards;
+}
+.show_modal {
+  display: block;
+}
+
+.option_cbb {
+  background-color: #fff;
+  border: 1px solid black;
+  width: 130px;
+  height: max-content;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.option_cbb:hover {
+  background-color: #a69f9f;
+  transition: 0.5s;
+}
+
+/* animation */
+@keyframes dropdown {
+  from {
+    opacity: 0.5; /* Bắt đầu với độ trong suốt */
+    transform: translateY(-5px); /* Di chuyển lên trên một chút */
+  }
+  to {
+    opacity: 1; /* Hiển thị hoàn toàn */
+    transform: translateY(0); /* Không di chuyển */
+  }
+}
+
+@keyframes dropdownReverse {
+  from {
+    opacity: 1; /* Hiển thị hoàn toàn */
+    transform: translateY(0); /* Không di chuyển */
+  }
+  to {
+    opacity: 0; /* Ẩn đi */
+    transform: translateY(-10px); /* Di chuyển lên trên một chút */
+  }
+}

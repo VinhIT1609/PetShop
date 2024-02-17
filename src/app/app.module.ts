@@ -19,6 +19,7 @@ import { MasterReportComponent } from './components/admin/main_page/main/master_
 import { Header_masterComponent } from './components/admin/main_page/main/header_master/header_master.component';
 import { LogInComponent } from './components/Login_Signin/log-in/log-in.component';
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
+import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.compo
     MasterPromotionComponent,
     MasterReportComponent,
     LogInComponent,
-    SingInComponent
+    SingInComponent,
+    ComboboxCustomComponent
   ],
   imports: [
     BrowserModule,
