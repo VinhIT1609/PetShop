@@ -1,6 +1,48 @@
-<h2>Product</h2>
-<div>
-  <cbb-custom [dataSourceChild]="dataSource" [displayName]="'tensp'" [value]="'id'" [(outputItem)]="itemCbb['id']"
-    [placeholder]="'Select item ...'"></cbb-custom>
-  <!-- <div>{{itemCbb.id ?? ''}}</div> -->
+<!-- header -->
+<div class="headerBox">
+  <div class="headerMaster">
+    <span>PRODUCT MANAGE</span>
+  </div>
+  <div class="btn_addNewPD">
+    <span class="material-symbols-outlined iconAdd">add</span><span class="btn_add_content"><b>Add Product</b></span>
+  </div>
 </div>
+<!-- header -->
+<!-- control box -->
+<div class="control_box text-white">
+  <div class="box_view" style="background-color: rgba(0, 0, 0, 0.822);">
+    <div class="material-symbols-outlined icon_box_view">package_2</div>
+    <div class="content_box_view">
+      <p class="number_box_view">{{totalProducts}}</p>
+      <p class="text_box_view">Total Products</p>
+    </div>
+  </div>
+  <div class="box_view" style="background-color: rgba(0, 128, 0, 0.893);">
+    <div class="material-symbols-outlined icon_box_view">check_circle</div>
+    <div class="content_box_view">
+      <p class="number_box_view">{{active}}</p>
+      <p class="text_box_view">Active</p>
+    </div>
+  </div>
+  <div class="box_view" style="background-color: rgba(255, 0, 0, 0.714);">
+    <div class="material-symbols-outlined icon_box_view">close</div>
+    <div class="content_box_view">
+      <p class="number_box_view">{{deactive}}</p>
+      <p class="text_box_view">Deactive</p>
+    </div>
+  </div>
+  <div class="box_view" style="background-color: rgba(255, 68, 0, 0.855);">
+    <div class="material-symbols-outlined icon_box_view">inventory_2</div>
+    <div class="content_box_view">
+      <p class="number_box_view">{{outofstock}}</p>
+      <p class="text_box_view">Out of stock</p>
+    </div>
+  </div>
+</div>
+<!-- control box -->
+<!-- table view -->
+<div class="product_table table_wrapper">
+  <app-tableCustom [tableHeaders]="headerProduct" [tableContents]="productList"
+    [actionValues]="actionProductValues"></app-tableCustom>
+</div>
+<!-- table view -->

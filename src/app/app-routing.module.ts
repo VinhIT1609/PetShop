@@ -12,6 +12,8 @@ import { HomeComponent } from './components/user/homepage/home/home.component';
 import { LogInComponent } from './components/Login_Signin/log-in/log-in.component';
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
+import path from 'node:path';
+import { TableCustomComponent } from './customUI/tableCustom/tableCustom.component';
 
 const routes: Routes = [
   {
@@ -29,7 +31,8 @@ const routes: Routes = [
   { path: 'MainPage', component: HomeComponent },
   { path: 'Login', component: LogInComponent },
   { path: 'Signin', component: SingInComponent },
-  { path: 'CbbCustom', component: ComboboxCustomComponent }
+  { path: 'CbbCustom', component: ComboboxCustomComponent },
+  { path: 'tableCustom', component: TableCustomComponent }
 
   // { path: '/Account', component: MasterAccountComponent }
 ];

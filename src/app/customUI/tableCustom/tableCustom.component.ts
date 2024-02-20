@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-tableCustom',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tableCustom.component.css']
 })
 export class TableCustomComponent implements OnInit {
-
+  @Input() tableHeaders: any[] = [];
+  @Input() tableContents: any = [];
+  @Input() actionValues: any[] = []
   constructor() { }
 
   ngOnInit() {

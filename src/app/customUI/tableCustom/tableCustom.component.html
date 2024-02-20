@@ -1,8 +1,28 @@
-<table>
-  <thead>
-    <th></th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody></tbody>
-</table>
+<div class="table-responsive">
+  <table class="table_custom">
+    <thead>
+      <tr>
+        <th class="header"><span><input type="checkbox" name="" id=""></span></th>
+        <ng-container *ngFor="let itemHeader of tableHeaders">
+          <th class="header_content header"><span>{{itemHeader['Head']}}</span></th>
+        </ng-container>
+        <th class="header_content">Action</th>
+      </tr>
+    </thead>
+    <tbody class="tbody_scroll">
+      <tr *ngFor="let item of tableContents">
+        <td class="header_content"><span><input type="checkbox"></span></td>
+        <td class="header_content" *ngFor="let header of tableHeaders">
+          {{item[header['FieldName']]}}
+        </td>
+        <td class="action">
+          <div class="action_box">
+            <ng-container *ngFor="let action of actionValues">
+              <div class="material-symbols-outlined action_icon" [class]=action.action> {{action['icon']}}</div>
+            </ng-container>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
