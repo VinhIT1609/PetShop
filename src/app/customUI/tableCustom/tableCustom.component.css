@@ -1,7 +1,22 @@
+.table_modal {
+  /* max-width: 1000px;
+  max-height: 300px; */
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.table_modal::-webkit-scrollbar {
+  background-color: #79c1f1;
+  width: 5px;
+  height: 8px;
+  padding: 2px;
+}
+.table_modal::-webkit-scrollbar-thumb{
+  background-color: #888888;
+  border-radius: 2px;
+}
+
 .table_custom {
   box-shadow: 2px 4px #888888;
-  width: fit-content;
-
   max-width: 1em;
 }
 .table_custom thead {

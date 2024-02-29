@@ -75,26 +75,48 @@
 }
 /* control box css end */
 /* custom table css  */
-.product_table{
+.product_table {
   width: fit-content;
   height: fit-content;
   position: relative;
-  left: 4%;
-  top: 20%;
+  left: 15%;
+  top: 23%;
 }
 
-.table_wrapper {
-  max-height: 300px;
-  max-width: fit-content;
-  width: max-content;
-  overflow-y: auto;
-  overflow-x: auto;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  scrollbar-width: none;
+.toolbox {
+  position: relative;
+  top: 18%;
+  left: 14.5%;
+  font-size: 18px;
+  display: flex;
+  width: 1000px;
+  /* height: 20px; */
 }
-.product_table table thead{
-  position: sticky;
-  top: 0;
-  background-color: #0b99da;
-  z-index: 1;
+
+.search_product {
+  position: absolute;
+  left: 1%;
+  margin-right: 5px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid ;
+  border-color: dodgerblue;
+}
+
+.btn_delete {
+  position: absolute;
+  right: 13.5%;
+  display: flex;
+  border-radius: 10px;
+  background-color: red;
+  padding: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.btn_delete:hover {
+  transition: 0.3s;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
 }

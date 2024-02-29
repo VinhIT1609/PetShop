@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tableCustom.component.css']
 })
 export class TableCustomComponent implements OnInit {
+  @Input() maxWidth!: number;
+  @Input() maxHeight!: number;
   @Input() tableHeaders: any[] = [];
   @Input() tableContents: any = [];
   @Input() actionValues: any[] = []

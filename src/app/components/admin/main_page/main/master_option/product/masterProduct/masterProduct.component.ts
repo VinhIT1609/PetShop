@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./masterProduct.component.css']
 })
 export class MasterProductComponent implements OnInit {
+  // CSS value
+  custable_maxWidth_Product: number = 1000;
+  custable_maxHeight_Product: number = 300;
   //value
   totalProducts: number = 100;
   active: number = 100;
@@ -51,7 +54,6 @@ export class MasterProductComponent implements OnInit {
     { 'Head': 'Quantity', 'FieldName': 'quantity' },
     { 'Head': 'Status', 'FieldName': 'status' },
     { 'Head': 'Category', 'FieldName': 'category' },
-
   ];
   productList: any = [
     {
