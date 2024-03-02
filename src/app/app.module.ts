@@ -20,6 +20,7 @@ import { Header_masterComponent } from './components/admin/main_page/main/header
 import { LogInComponent } from './components/Login_Signin/log-in/log-in.component';
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
+import { PaginationComponent } from './customUI/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-cus
     MasterReportComponent,
     LogInComponent,
     SingInComponent,
-    ComboboxCustomComponent
+    ComboboxCustomComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

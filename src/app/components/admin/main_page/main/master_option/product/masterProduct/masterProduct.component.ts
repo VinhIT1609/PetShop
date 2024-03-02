@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-masterProduct',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./masterProduct.component.css']
 })
 export class MasterProductComponent implements OnInit {
+  // pagination value
+  @Output() itemPerPage_Product = 10;
+  @Output() currentPage_Product = 1;
   // CSS value
   custable_maxWidth_Product: number = 1000;
   custable_maxHeight_Product: number = 300;
@@ -244,6 +247,692 @@ export class MasterProductComponent implements OnInit {
       quantity: 150,
       status: false,
       category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    }, {
+      id: 3,
+      name: 'thuoc tieu chay',
+      image: 'link',
+      price: 30000,
+      quantity: 150,
+      status: false,
+      category: 'thuoc'
+    },
+    {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    }, {
+      id: 1,
+      name: 'pate cho',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
+    },
+    {
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
     },
   ];
   //function
