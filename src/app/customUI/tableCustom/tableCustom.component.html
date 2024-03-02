@@ -10,8 +10,9 @@
     </thead>
 
     <tbody class="tbody_scroll">
-      <tr *ngFor="let item of paginatedData">
-        <td class="header_content"><span><input type="checkbox"></span></td>
+      <tr *ngFor="let item of paginatedData; index as idx">
+        <!-- <td class="header_content"><span><input type="checkbox"></span></td> -->
+        <td>{{idx+1}}</td>
         <td class="header_content" *ngFor="let header of tableHeaders">
           {{item[header['FieldName']]}}
         </td>
@@ -26,5 +27,8 @@
   [itemPerPage]="itemPerPageTable"
   [currentPage]="currentPageTable"
   (onClick)="changePage($event)"
+  [firstData]="tableContents"
+  [itemPerPageArray]="itemPerPageArrayTable"
+  (emitCurr)="bindCurr($event)"
   ></app-pagination>
 </div>

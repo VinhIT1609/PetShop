@@ -6,9 +6,6 @@ import { Component, OnInit, Output } from '@angular/core';
   styleUrls: ['./masterProduct.component.css']
 })
 export class MasterProductComponent implements OnInit {
-  // pagination value
-  @Output() itemPerPage_Product = 10;
-  @Output() currentPage_Product = 1;
   // CSS value
   custable_maxWidth_Product: number = 1000;
   custable_maxHeight_Product: number = 300;
@@ -934,6 +931,7 @@ export class MasterProductComponent implements OnInit {
       status: true,
       category: 'meo'
     },
+    
   ];
   //function
   constructor() { }

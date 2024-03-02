@@ -1,10 +1,38 @@
-<nav aria-label="Page navigation example">
-  <ul class="pagination" style="cursor: pointer;">
-    <li class="page-item"><a class="page-link" (click)="
-      pageClicked(currentPage-1)" [ngClass]="{ disabled: currentPage === 1}">Previous</a></li>
-    <li class="page-item" [ngClass]="{'active' : page==currentPage}" *ngFor="let page of pages" (click)="
-    pageClicked(page)"><a class="page-link">{{page}}</a></li>
-    <li class="page-item"><a class="page-link" [ngClass]="{ disabled: currentPage === totalPages}" (click)="
-      pageClicked(currentPage+1)">Next</a></li>
-  </ul>
-</nav>
+<div class="box_pagination">
+  <select name="" id="" #optionPerPage (change)="changePerPage()">
+    <ng-container *ngFor="let ippage of itemPerPageArray">
+      <option [value]="ippage">{{ ippage }}</option>
+    </ng-container>
+  </select>
+  <div>{{ itemStart }} to {{ itemEnd }} of {{ totalItems }}</div>
+  <nav>
+    <ul class="pagination" style="cursor: pointer">
+      <li class="page-item">
+        <a
+          class="page-link"
+          (click)="pageClicked(currentPage - 1)"
+          (click)="previousClicked()"
+          [ngClass]="{ disabled: currentPage === 1 }"
+          ><div class="material-symbols-outlined">arrow_back_ios</div>
+        </a>
+      </li>
+      <!-- <li
+        class="page-item"
+        [ngClass]="{ active: page == currentPage }"
+        *ngFor="let page of pages"
+        (click)="pageClicked(page)"
+      >
+        <a class="page-link">{{ page }}</a>
+      </li> -->
+      <li class="page-item">
+        <a
+          class="page-link"
+          [ngClass]="{ disabled: currentPage === totalPages }"
+          (click)="pageClicked(currentPage + 1)"
+          (click)="nextClicked()"
+          ><div class="material-symbols-outlined">arrow_forward_ios</div></a
+        >
+      </li>
+    </ul>
+  </nav>
+</div>
