@@ -930,6 +930,14 @@ export class MasterProductComponent implements OnInit {
       quantity: 200,
       status: true,
       category: 'meo'
+    },{
+      id: 2,
+      name: 'pate meo',
+      image: 'link',
+      price: 20000,
+      quantity: 200,
+      status: true,
+      category: 'meo'
     },
     
   ];

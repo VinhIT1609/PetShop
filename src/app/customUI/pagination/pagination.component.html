@@ -1,10 +1,15 @@
 <div class="box_pagination">
-  <select name="" id="" #optionPerPage (change)="changePerPage()">
+  <select
+    name=""
+    id=""
+    #optionPerPage
+    (change)="changeItemPerPage(optionPerPage.value)"
+  >
     <ng-container *ngFor="let ippage of itemPerPageArray">
       <option [value]="ippage">{{ ippage }}</option>
     </ng-container>
   </select>
-  <div>{{ itemStart }} to {{ itemEnd }} of {{ totalItems }}</div>
+  <div>{{ itemStart }} to {{ itemEnd }} of {{ totalItems }} currentPage: {{currentPage}} totalPage: {{totalPages}}</div>
   <nav>
     <ul class="pagination" style="cursor: pointer">
       <li class="page-item">

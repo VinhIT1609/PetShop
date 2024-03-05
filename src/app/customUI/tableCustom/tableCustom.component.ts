@@ -14,11 +14,12 @@ export class TableCustomComponent implements OnInit {
   @Input() itemPerPageTable: any;
   @Input() currentPageTable: any = 1;
   itemPerPageArrayTable: any[] = [5, 10, 25, 100];
-  constructor() {
+  constructor() {}
+
+  ngOnInit() {
     this.itemPerPageTable = this.itemPerPageArrayTable[0];
   }
 
-  ngOnInit() {}
   //chia data moi trang
   get paginatedData() {
     const start = (this.currentPageTable - 1) * this.itemPerPageTable;
@@ -28,9 +29,14 @@ export class TableCustomComponent implements OnInit {
   changePage(page: number) {
     this.currentPageTable = page;
   }
-  bindCurr(data: any) {
-    console.log('du lieu bindCurr', data);
-    this.currentPageTable = data;
-    this.paginatedData;
+  bindCurr(changeToFirstCurr: any) {
+    // console.log('du lieu bindCurr', changeToFirstCurr);
+    this.currentPageTable = changeToFirstCurr;
+    this.bindPerPage; // thay currentPage de reset data trong table
+    this.paginatedData; // back data vao talble
+  }
+
+  bindPerPage(newitemPerPage: string) {
+    this.itemPerPageTable = parseInt(newitemPerPage);
   }
 }

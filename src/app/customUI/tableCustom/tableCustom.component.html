@@ -27,8 +27,8 @@
   [itemPerPage]="itemPerPageTable"
   [currentPage]="currentPageTable"
   (onClick)="changePage($event)"
-  [firstData]="tableContents"
   [itemPerPageArray]="itemPerPageArrayTable"
   (emitCurr)="bindCurr($event)"
+  (emitItemPerPage)="bindPerPage($event)"
   ></app-pagination>
 </div>
