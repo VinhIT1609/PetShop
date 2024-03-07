@@ -1,7 +1,7 @@
 <!-- header -->
 <div class="headerBox">
   <div class="headerMaster">PRODUCT MANAGE</div>
-  <div class="btn_addNewPD">
+  <div class="btn_addNewPD" (click)="addNewPD()">
     <span class="material-symbols-outlined iconAdd">add</span
     ><span class="btn_add_content"><b>Add Product</b></span>
   </div>
@@ -44,8 +44,10 @@
   <input class="search_product" type="text" placeholder="Enter name ..." />
 
   <div class="btn_delete">
-    <span class="material-symbols-outlined"> delete </span>
-    <span>Remove Product</span>
+    <span>
+      <span class="material-symbols-outlined delete_icon"> delete </span>
+      Remove Product
+    </span>
   </div>
 </div>
 
@@ -59,7 +61,6 @@
     [actionValues]="actionProductValues"
     [maxWidth]="custable_maxWidth_Product"
     [maxHeight]="custable_maxHeight_Product"
-    
   ></app-tableCustom>
 </div>
 <!-- table view -->

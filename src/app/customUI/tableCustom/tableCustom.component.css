@@ -1,8 +1,7 @@
 .table_modal {
-  /* max-width: 1000px;
-  max-height: 300px; */
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* background-color: #888888; */
 }
 .table_modal::-webkit-scrollbar {
   background-color: #79c1f1;
@@ -17,7 +16,6 @@
 
 .table_custom {
   box-shadow: 2px 4px #888888;
-  max-width: 1em;
 }
 .table_custom thead {
   position: sticky;

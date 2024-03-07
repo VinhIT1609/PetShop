@@ -1,20 +1,31 @@
-<div class="table_modal" [ngStyle]="{'max-width.px':maxWidth,'max-height.px':maxHeight}">
-  <table class="table_custom">
+<div
+  class="table_modal"
+  [ngStyle]="{
+    'max-width.px': maxWidth,
+    'max-height.px': maxHeight,
+    'height.px': maxHeight
+  }"
+>
+  <table class="table_custom" [ngStyle]="">
     <thead>
       <tr>
-        <th class="header"><span><input type="checkbox" name="" id=""></span></th>
+        <th class="header">
+          <span><input type="checkbox" name="" id="" /></span>
+        </th>
         <ng-container *ngFor="let itemHeader of tableHeaders">
-          <th class="header_content header"><span>{{itemHeader['Head']}}</span></th>
+          <th class="header_content header">
+            <span>{{ itemHeader["Head"] }}</span>
+          </th>
         </ng-container>
       </tr>
     </thead>
 
     <tbody class="tbody_scroll">
       <tr *ngFor="let item of paginatedData; index as idx">
-        <!-- <td class="header_content"><span><input type="checkbox"></span></td> -->
-        <td>{{idx+1}}</td>
+        <td class="header_content"><span><input type="checkbox"></span></td>
+        <!-- <td>{{ idx + 1 }}</td> -->
         <td class="header_content" *ngFor="let header of tableHeaders">
-          {{item[header['FieldName']]}}
+          {{ item[header["FieldName"]] }}
         </td>
       </tr>
     </tbody>
@@ -23,12 +34,12 @@
 
 <div class="pagination">
   <app-pagination
-  [totalItems]="tableContents.length"
-  [itemPerPage]="itemPerPageTable"
-  [currentPage]="currentPageTable"
-  (onClick)="changePage($event)"
-  [itemPerPageArray]="itemPerPageArrayTable"
-  (emitCurr)="bindCurr($event)"
-  (emitItemPerPage)="bindPerPage($event)"
+    [totalItems]="tableContents.length"
+    [itemPerPage]="itemPerPageTable"
+    [currentPage]="currentPageTable"
+    (onClick)="changePage($event)"
+    [itemPerPageArray]="itemPerPageArrayTable"
+    (emitCurr)="bindCurr($event)"
+    (emitItemPerPage)="bindPerPage($event)"
   ></app-pagination>
 </div>

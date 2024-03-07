@@ -48,7 +48,7 @@ export class PaginationComponent implements OnInit {
     this.emitCurr.emit(1); // first current per page
     this.emitItemPerPage.emit(value);
     this.itemStart = 1; //gan lai itemStart
-    this.itemEnd = parseInt(value);// gan lai itemEnd
+    this.itemEnd = parseInt(value); // gan lai itemEnd
     this.totalPages = Math.ceil(this.totalItems / parseInt(value)); // gan lai totalPages khi thay doi perpage
   }
 }
