@@ -230,3 +230,12 @@
     transform: translateY(0);
   }
 }
+
+.cbb_form {
+  display: flex;
+  position: relative;
+  height: 50px;
+}
+.cbb_form > label {
+  margin-right: 20px;
+}

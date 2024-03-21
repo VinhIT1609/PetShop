@@ -12,7 +12,6 @@ import { HomeComponent } from './components/user/homepage/home/home.component';
 import { LogInComponent } from './components/Login_Signin/log-in/log-in.component';
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
-import path from 'node:path';
 import { TableCustomComponent } from './customUI/tableCustom/tableCustom.component';
 
 const routes: Routes = [

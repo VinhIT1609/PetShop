@@ -981,7 +981,7 @@ export class MasterProductComponent implements OnInit {
     this.isOpenForm = !this.isOpenForm;
   }
   propagation(event: Event) {
-    console.log("click");
+    console.log('click');
     event.stopPropagation();
   }
   // form add san pham
@@ -994,4 +994,22 @@ export class MasterProductComponent implements OnInit {
     status: '',
     category: '',
   };
+  // temp data for form
+  dataStatus: any[] = [
+    {
+      id: 1,
+      status: 'Active',
+      value: true,
+    },
+    {
+      id: 2,
+      status: 'Deactive',
+      value: false,
+    },
+  ];
+  dataCategory: any[] = [
+    { id: 1, name: 'Dog Food Company', value: 'dog_company' },
+    { id: 2, name: 'Cat Food Company', value: 'cat_company' },
+    { id: 3, name: 'Toy Company', value: 'toy_company' },
+  ];
 }

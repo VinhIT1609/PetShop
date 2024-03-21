@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-
 @Component({
   selector: 'cbb-custom',
   templateUrl: './combobox-custom.component.html',
-  styleUrl: './combobox-custom.component.css'
+  styleUrl: './combobox-custom.component.css',
 })
 export class ComboboxCustomComponent implements OnInit {
   // value
@@ -22,7 +21,7 @@ export class ComboboxCustomComponent implements OnInit {
   ngOnInit(): void {
     if (this.itemSelected == null) {
       // console.log('dataSource null !!!');
-      this.itemSelected = {}
+      this.itemSelected = {};
       this.nameChooseItem = this.placeholder;
     }
     // filter
@@ -64,4 +63,10 @@ export class ComboboxCustomComponent implements OnInit {
     this.outputItem = value;
     this.outputItemChange.emit(value);
   }
+
+  itemCbb: any = {
+    id: null,
+    loaisp: 'food',
+    tensp: 'Bot Chien',
+  };
 }

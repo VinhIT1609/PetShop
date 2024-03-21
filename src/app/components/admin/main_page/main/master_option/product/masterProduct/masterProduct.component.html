@@ -88,20 +88,22 @@
         <input class="form_input" type="number" id="pd_price" />
         <label class="modal-label"> Quantity : </label>
         <input class="form_input" type="number" id="pd_quantity" />
-        <label class="modal-label"> Status : </label>
-        <select name="cbb_status" id="cbb_status">
-          <option value="">Active</option>
-          <option value="">Deactive</option>
-        </select>
-        <br /><br />
-        <label class="modal-label"> Category : </label>
-        <select name="cbb_category" id="cbb_category">
-          <option value="">Dog Food</option>
-          <option value="">Cat Food</option>
-          <option value="">Animal Toy</option>
-        </select>
-        <br />
-        <br />
+        <div class="cbb_form">
+          <label class="modal-label"> Status : </label>
+          <cbb-custom
+            [dataSourceChild]="dataStatus"
+            [displayName]="'status'"
+            [value]="'value'"
+          ></cbb-custom>
+        </div>
+        <div class="cbb_form" style="z-index: 1000;">
+          <label class="modal-label"> Category : </label>
+          <cbb-custom
+            [dataSourceChild]="dataCategory"
+            [displayName]="'name'"
+            [value]="'value'"
+          ></cbb-custom>
+        </div>
         <label for="" class="modal-label"> Description : </label>
         <textarea class="descrip_input"></textarea>
         <div class="btn_confirm"><p>CONFIRM</p></div>
