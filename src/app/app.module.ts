@@ -21,6 +21,7 @@ import { LogInComponent } from './components/Login_Signin/log-in/log-in.componen
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
 import { PaginationComponent } from './customUI/pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { PaginationComponent } from './customUI/pagination/pagination.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    FormsModule
   ],
   providers: [
     provideClientHydration()

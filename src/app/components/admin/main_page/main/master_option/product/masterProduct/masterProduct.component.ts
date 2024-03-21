@@ -1,4 +1,6 @@
+import { CommonModule, JsonPipe } from '@angular/common';
 import { Component, OnInit, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-masterProduct',
@@ -9,6 +11,7 @@ export class MasterProductComponent implements OnInit {
   // CSS value
   custable_maxWidth_Product: number = 1000;
   custable_maxHeight_Product: number = 300;
+  isOpenForm: boolean = false;
   //value
   totalProducts: number = 100;
   active: number = 100;
@@ -972,7 +975,23 @@ export class MasterProductComponent implements OnInit {
   ngOnInit() {}
 
   addNewPD() {
-    // alert('add clicked !!!');
-    
+    this.isOpenForm = !this.isOpenForm;
   }
+  toggleShowOverlay() {
+    this.isOpenForm = !this.isOpenForm;
+  }
+  propagation(event: Event) {
+    console.log("click");
+    event.stopPropagation();
+  }
+  // form add san pham
+  isFormSubmited: boolean = false;
+  productObjecy: any = {
+    productName: '',
+    image: '',
+    price: '',
+    quantity: '',
+    status: '',
+    category: '',
+  };
 }

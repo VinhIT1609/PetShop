@@ -39,7 +39,7 @@
   </div>
 </div>
 <!-- control box -->
-<!-- table view -->
+<!-- table view start-->
 <div class="toolbox">
   <input class="search_product" type="text" placeholder="Enter name ..." />
 
@@ -63,4 +63,51 @@
     [maxHeight]="custable_maxHeight_Product"
   ></app-tableCustom>
 </div>
-<!-- table view -->
+<!-- table view end -->
+
+<!-- form add san pham start -->
+
+<div class="modal" [class.open]="isOpenForm" (click)="toggleShowOverlay()">
+  <div class="modal_container_form_addsp" (click)="propagation($event)">
+    <div class="modal_close_btn">X</div>
+    <header class="modal_header">
+      <i class="header_icon ti-package"></i>
+      NEW PRODUCT
+    </header>
+    <div class="modal_body">
+      <form class="form_add_sp" action="" method="post">
+        <label class="modal-label"> Product Name : </label>
+        <input class="form_input" type="text" id="pd_name" />
+        <label class="modal-label"> Product Image : </label>
+        <div class="d-flex">
+          <input class="form_input" type="text" id="pd_img" />
+          <button style="height: 36px">openfile</button>
+        </div>
+
+        <label class="modal-label"> Price : </label>
+        <input class="form_input" type="number" id="pd_price" />
+        <label class="modal-label"> Quantity : </label>
+        <input class="form_input" type="number" id="pd_quantity" />
+        <label class="modal-label"> Status : </label>
+        <select name="cbb_status" id="cbb_status">
+          <option value="">Active</option>
+          <option value="">Deactive</option>
+        </select>
+        <br /><br />
+        <label class="modal-label"> Category : </label>
+        <select name="cbb_category" id="cbb_category">
+          <option value="">Dog Food</option>
+          <option value="">Cat Food</option>
+          <option value="">Animal Toy</option>
+        </select>
+        <br />
+        <br />
+        <label for="" class="modal-label"> Description : </label>
+        <textarea class="descrip_input"></textarea>
+        <div class="btn_confirm"><p>CONFIRM</p></div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- form add san pham end-->

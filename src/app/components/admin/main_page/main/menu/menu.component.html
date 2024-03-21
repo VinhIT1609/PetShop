@@ -1,11 +1,21 @@
 <div class="listMenu text-center">
-  <ul class="list-group" *ngFor=" let menuItem of menuItems; let idx = index">
-    <a [routerLink]="menuItem === 'Home'? '' :menuItem" class=" rounded-pill" routerLink=""
-      style="text-decoration: none;">
-      <li class="list-group-item text-center">
+  <ul class="list-group" *ngFor="let menuItem of menuItems; let idx = index">
+    <a
+      [routerLink]="menuItem === 'Home' ? '' : menuItem"
+      class="rounded-pill"
+      style="text-decoration: none"
+    >
+      <li
+        class="list-group-item text-center"
+        [class.isActive]="isActive"
+        (click)="handleClick(idx)"
+        [ngClass]="{ 'actived': activedItem === idx }"
+      >
         <span class="d-flex">
-          <span class="material-symbols-outlined iconMenu">{{iconItems[idx]}}</span>
-          <span class="">{{menuItem}}</span>
+          <span class="material-symbols-outlined iconMenu">{{
+            iconItems[idx]
+          }}</span>
+          <span>{{ menuItem }}</span>
         </span>
       </li>
     </a>
