@@ -81,7 +81,10 @@
   height: 50%;
   margin-top: 20px;
 }
-
+.product_table > .table {
+  min-height: 500px;
+  max-height: 500px;
+}
 .toolbox {
   /* background-color: black; */
   font-size: 18px;
@@ -99,20 +102,18 @@
 }
 
 .btn_delete {
-  bottom: 0.1rem;
-  display: flex;
+  background-color: #e53935;
   border-radius: 10px;
-  background-color: red;
+  width: fit-content;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  font-weight: 500;
   cursor: pointer;
-  font-weight: 600;
   transition: 0.3s;
-  vertical-align: middle;
-  line-height: 3rem;
-  padding: 5px;
 }
 .delete_icon {
-  line-height: 3rem;
-  vertical-align: middle;
 }
 .btn_delete:hover {
   transition: 0.3s;
@@ -179,6 +180,7 @@
 }
 .modal-label {
   font-size: 20px;
+  font-weight: 500;
 }
 
 .form_input {
@@ -186,6 +188,8 @@
   margin-bottom: 16px;
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
+  border-radius: 10px;
+  outline: auto;
 }
 .descrip_input {
   width: 100%;
@@ -210,6 +214,14 @@
   font-size: 24px;
 }
 
+.cbb_form {
+  display: flex;
+  height: 50px;
+}
+.cbb_form > label {
+  margin-right: 20px;
+}
+/* animation */
 @keyframes modalMoveIn {
   from {
     opacity: 0;
@@ -219,78 +231,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.cbb_form {
-  display: flex;
-  position: relative;
-  height: 50px;
-}
-.cbb_form > label {
-  margin-right: 20px;
-}
-
-/* toggle */
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, ".SFNSText-Regular", "Helvetica Neue", "Roboto",
-    "Segoe UI", sans-serif;
-}
-
-.toggle {
-  cursor: pointer;
-  display: inline-block;
-}
-
-.toggle-switch {
-  display: inline-block;
-  background: #ccc;
-  border-radius: 16px;
-  width: 58px;
-  height: 32px;
-  position: relative;
-  vertical-align: middle;
-  transition: background 0.25s;
-}
-.toggle-switch:before,
-.toggle-switch:after {
-  content: "";
-}
-.toggle-switch:before {
-  display: block;
-  background: linear-gradient(to bottom, #fff 0%, #eee 100%);
-  border-radius: 50%;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  transition: left 0.25s;
-}
-.toggle:hover .toggle-switch:before {
-  background: linear-gradient(to bottom, #fff 0%, #fff 100%);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
-}
-.toggle-checkbox:checked + .toggle-switch {
-  background: #56c080;
-}
-.toggle-checkbox:checked + .toggle-switch:before {
-  left: 30px;
-}
-
-.toggle-checkbox {
-  position: absolute;
-  visibility: hidden;
-}
-
-.toggle-label {
-  margin-left: 5px;
-  position: relative;
-  top: 2px;
 }

@@ -1,4 +1,6 @@
 .table_modal {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   overflow: auto;
@@ -31,18 +33,29 @@
   transition: 0.3s;
   background-color: #79c1f1;
 }
+.table_custom tbody tr:nth-child(even) {
+  background-color: #9fa9af40;
+}
+.table_custom tbody tr:nth-child(even):hover {
+  transition: 0.3s;
+  background-color: #79c1f1;
+}
 .tbody_scroll {
   max-height: 100px;
   overflow-y: auto;
 }
-
-.header_content {
+.header,
+.content {
   text-align: center;
-  vertical-align: middle;
-  padding: 20px 4ch;
+  padding: 10px;
+  font-size: 20px;
 }
-.header {
-  padding: 12px 4ch;
+.productNameHeader {
+  width: 250px;
+  font-weight: 700;
+}
+.wrap_content {
+  word-wrap: break-word;
 }
 /* action icon css */
 .action_box {
@@ -75,10 +88,23 @@
   background-color: red;
 }
 
+.imgInTable {
+  width: 100px;
+  height: 120px;
+  border-radius: 20px;
+}
+
+.statusActive {
+  color: greenyellow;
+  font-weight: 500;
+}
+.statusDeactive {
+  color: red;
+  font-weight: 500;
+}
 /* pagination */
 .pagination {
-  position: absolute;
-  right: 0;
-  width: fit-content;
-  height: fit-content;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }

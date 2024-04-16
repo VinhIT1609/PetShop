@@ -45,22 +45,20 @@
   <div class="toolbox">
     <input class="search_product" type="text" placeholder="Enter name ..." />
     <div class="btn_delete">
-      <span>
-        <span class="material-symbols-outlined delete_icon"> delete </span>
-        Remove Product
-      </span>
+      <div class="material-symbols-outlined delete_icon">delete</div>
+      <div>Remove Product</div>
     </div>
   </div>
-  <app-tableCustom
-    [tableHeaders]="headerProduct"
-    [tableContents]="productList_fake"
-  ></app-tableCustom>
+  <div class="table">
+    <app-tableCustom
+      [tableHeaders]="headerProduct"
+      [tableContents]="productList_fake"
+    ></app-tableCustom>
+  </div>
 </div>
 
 <!-- table view end -->
-
 <!-- form add san pham start -->
-
 <div class="modal" [class.open]="isOpenForm" (click)="toggleShowOverlay()">
   <div class="modal_container_form_addsp" (click)="propagation($event)">
     <div class="modal_close_btn" (click)="toggleShowOverlay()">X</div>

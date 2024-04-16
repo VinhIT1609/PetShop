@@ -10,7 +10,7 @@ import { ApiServicesService } from '../../../../../../../Services/api-services.s
 })
 export class MasterProductComponent implements OnInit {
   // CSS value
-  
+
   isOpenForm: boolean = false;
   //value
   totalProducts: number = 100;
@@ -19,33 +19,6 @@ export class MasterProductComponent implements OnInit {
   outofstock: number = 100;
   productData_sql: any[] = [];
   productList: any[] = [];
-  dataSource: any[] = [
-    {
-      id: 1,
-      loaisp: 'food',
-      tensp: 'Bot Chien',
-    },
-    {
-      id: 2,
-      loaisp: 'water',
-      tensp: 'Watermelon Juice',
-    },
-    {
-      id: 3,
-      loaisp: 'food',
-      tensp: 'Com Chien',
-    },
-    {
-      id: 4,
-      loaisp: 'water',
-      tensp: 'Coca',
-    },
-  ];
-  itemCbb: any = {
-    id: null,
-    loaisp: 'food',
-    tensp: 'Bot Chien',
-  };
   //table value
   headerProduct: any[] = [
     { Head: 'Product Name', FieldName: 'ProductName' },
@@ -59,8 +32,19 @@ export class MasterProductComponent implements OnInit {
   productList_fake: any = [
     {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'pate cho1',
+      Image:
+        'https://fagopet.vn/uploads/images/6289daf49487f626bf2d8617/thuc-an-cho-cho-lon-pedigree-vi-bo-tui-3kg.webp',
+      Price: 20000,
+      Quantity: 200,
+      Status: 'Active',
+      Category: 'meo',
+    },
+    {
+      id: 2,
+      ProductName: 'pate cho2',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
@@ -68,72 +52,229 @@ export class MasterProductComponent implements OnInit {
     },
     {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'pate cho3',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'pate cho4',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'pate cho5',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'pate cho6',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'patasdasdasde cho7',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'paasdasdasdasdte cho8',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'patasdasdasdasde cho9',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'asdasdasdasdasd cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
       Category: 'meo',
-    },{
+    },
+    {
       id: 1,
-      ProductName: 'pate cho',
-      Image: 'link',
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate ádasdasdasdascho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
+      Price: 20000,
+      Quantity: 200,
+      Status: true,
+      Category: 'meo',
+    },
+    {
+      id: 1,
+      ProductName: 'pate cho10',
+      Image:
+        'https://vinpet.com.vn/wp-content/uploads/2020/12/Thuc-an-cho-cho-ganador-adult-600x600.jpg',
       Price: 20000,
       Quantity: 200,
       Status: true,
@@ -159,7 +300,6 @@ export class MasterProductComponent implements OnInit {
         }
         this.productList.push(product);
       });
-      // console.log(this.productList);
       console.log(this.productData_sql);
     });
   }

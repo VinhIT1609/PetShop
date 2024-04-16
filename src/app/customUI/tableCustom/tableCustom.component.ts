@@ -6,21 +6,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./tableCustom.component.css'],
 })
 export class TableCustomComponent implements OnInit {
-  @Input() maxWidth: string = '100%';
-  @Input() maxHeight: string = '100%';
   @Input() tableHeaders: any[] = [];
   @Input() tableContents: any = [];
   @Input() actionValues: any[] = [];
   @Input() itemPerPageTable: any;
   @Input() currentPageTable: any = 1;
-  itemPerPageArrayTable: any[] = [5, 10, 25, 100];
+  itemPerPageArrayTable: any[] = [5, 10, 25, 100]; // số lượng item mỗi trang
   constructor() {}
 
   ngOnInit() {
     this.itemPerPageTable = this.itemPerPageArrayTable[0];
   }
 
-  //chia data moi trang
+  //chia data
   get paginatedData() {
     const start = (this.currentPageTable - 1) * this.itemPerPageTable;
     const end = start + this.itemPerPageTable;
@@ -30,11 +28,9 @@ export class TableCustomComponent implements OnInit {
     this.currentPageTable = page;
   }
   bindCurr(changeToFirstCurr: any) {
-    debugger;
-    // console.log('du lieu bindCurr', changeToFirstCurr);
     this.currentPageTable = changeToFirstCurr;
-    this.bindPerPage; // thay currentPage de reset data trong table
-    this.paginatedData; // back data vao talble
+    this.bindPerPage; // thay currenPage để reset lại data trong bảng
+    this.paginatedData; // trả data vào lại table
   }
 
   bindPerPage(newitemPerPage: string) {

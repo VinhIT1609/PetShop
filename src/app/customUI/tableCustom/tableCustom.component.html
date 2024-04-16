@@ -1,13 +1,13 @@
 <div class="table_modal">
-  <table class="table_custom" [ngStyle]="">
+  <table class="table_custom">
     <thead>
       <tr>
         <th class="header">
           <span><input type="checkbox" name="" id="" /></span>
         </th>
         <ng-container *ngFor="let itemHeader of tableHeaders">
-          <th class="header_content header">
-            <span>{{ itemHeader["Head"] }}</span>
+          <th class="header productNameHeader">
+            <p class="wrap_content">{{ itemHeader["Head"] }}</p>
           </th>
         </ng-container>
       </tr>
@@ -15,19 +15,51 @@
 
     <tbody class="tbody_scroll">
       <tr *ngFor="let item of paginatedData; index as idx">
-        <td class="header_content">
+        <td class="content">
           <span><input type="checkbox" /></span>
         </td>
         <!-- <td>{{ idx + 1 }}</td> -->
-        <td class="header_content" *ngFor="let header of tableHeaders">
-          {{ item[header["FieldName"]] }}
+        <td class="content" *ngFor="let header of tableHeaders">
+          <ng-container
+            *ngIf="
+              header['FieldName'] === 'Image';
+              else normalContent;
+              else: ifStatus
+            "
+          >
+            <img
+              class="imgInTable"
+              [src]="item[header['FieldName']]"
+              alt="Image"
+            />
+          </ng-container>
+          <ng-template #ifStatus>
+            <ng-container
+              *ngIf="header['FieldName'] === 'Status'; else normalContent"
+            >
+              <ng-container
+                *ngIf="
+                  item[header['FieldName']] === 'Active';
+                  else deActiveContent
+                "
+              >
+                <div class="statusActive">Active</div>
+              </ng-container>
+            </ng-container>
+            <ng-template #deActiveContent>
+              <div class="statusDeactive">Deactive</div>
+            </ng-template>
+          </ng-template>
+
+          <ng-template #normalContent>
+            {{ item[header["FieldName"]] }}
+          </ng-template>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
-
-<!-- <div class="pagination">
+<div class="pagination">
   <app-pagination
     [totalItems]="tableContents.length"
     [itemPerPage]="itemPerPageTable"
@@ -37,4 +69,4 @@
     (emitCurr)="bindCurr($event)"
     (emitItemPerPage)="bindPerPage($event)"
   ></app-pagination>
-</div> -->
+</div>
