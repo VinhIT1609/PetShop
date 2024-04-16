@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-.mgl-25 {
-  margin-left: 25%;
-}
+
 html,
 body {
-  width: 100%;
+  width: 100vw;
 }

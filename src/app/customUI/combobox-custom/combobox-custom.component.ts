@@ -15,7 +15,7 @@ export class ComboboxCustomComponent implements OnInit {
   @Input() outputItem: any = '';
   @Output() outputItemChange = new EventEmitter();
   @Input() isShow = false;
-  @Input() placeholder: string = '';
+  @Input() placeholder: string = 'Select ...';
 
   // khi moi khoi tao
   ngOnInit(): void {

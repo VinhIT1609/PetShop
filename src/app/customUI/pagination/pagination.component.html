@@ -22,9 +22,8 @@
       <ul class="pagination" style="cursor: pointer">
         <li class="page-item">
           <a
-            class="page-link "
-            (click)="pageClicked(currentPage - 1)"
-            (click)="previousClicked()"
+            class="page-link"
+            (click)="pageClicked(currentPage - 1,'previous')"
             [ngClass]="{ disabled: currentPage === 1 }"
             ><div class="material-symbols-outlined arrow">arrow_back_ios</div>
           </a>
@@ -39,11 +38,12 @@
               </li> -->
         <li class="page-item">
           <a
-            class="page-link "
+            class="page-link"
             [ngClass]="{ disabled: currentPage === totalPages }"
-            (click)="pageClicked(currentPage + 1)"
-            (click)="nextClicked()"
-            ><div class="material-symbols-outlined arrow">arrow_forward_ios</div></a
+            (click)="pageClicked(currentPage + 1,'next');"
+            ><div class="material-symbols-outlined arrow">
+              arrow_forward_ios
+            </div></a
           >
         </li>
       </ul>

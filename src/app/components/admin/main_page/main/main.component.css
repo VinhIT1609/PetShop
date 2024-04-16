@@ -1,48 +1,33 @@
-.background_admin {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background-color: black;
-  z-index: -1;
-}
 .box_menu_field {
-  position: relative;
-  top: 0;
-  bottom: 0;
+  display: flex;
+  flex-direction: column;
   height: 100vh;
+  min-width: 300px;
+  padding: 20px 10px;
   background-color: rgb(73, 119, 227);
+  gap: 20px;
+  justify-content: space-between;
 }
-
 .logo {
-  position: absolute;
-  top: 2%;
-  left: 10%;
-  height: 10%;
-  width: 90%;
+  display: flex;
+  justify-content: center;
 }
 .logo > img {
-  height: 200%;
-  border-radius: 10%;
+  width: 50%;
+  border-radius: 100px;
 }
 
 .list_menu_admin {
-  position: absolute;
-  top: 25%;
-  left: 15%;
+  width: 70%;
+  min-width: 200px;
 }
 
 .btn_leave {
   background-color: rgb(232, 72, 72);
-  position: absolute;
-  bottom: 3%;
-  width: 85%;
-  left: 6%;
-  height: 8%;
-  line-height: normal;
-  align-items: center;
-  transition: 0.5s;
+  border: none;
+  height: 50px;
+  width: 70%;
+  border-radius: 100px;
 }
 
 .btn_leave:hover {
@@ -50,11 +35,8 @@
   background-color: #ec1e1e;
 }
 
-.btn_leave > .span_surround {
-  margin-left: 10%;
-}
-
 .master_page {
   padding: 0%;
   background-color: white;
 }
+

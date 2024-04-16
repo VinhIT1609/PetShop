@@ -1,13 +1,14 @@
 .list-group-item {
-  margin-bottom: 10%;
-  width: 130%;
-  transition: 0.5s;
+  margin-bottom: 10px;
 }
-.list-group-item > span {
-  margin-left: 15%;
+.list-group-item {
+  display: flex;
+  justify-content: center;
 }
 .iconMenu {
-  padding-right: 10%;
+}
+.menuItem{
+  width: 100px;
 }
 .list-group-item:hover {
   background-color: #2fa4c8;

@@ -1,11 +1,14 @@
 .user_avatar {
-  position: absolute;
-  top: 5%;
-  right: 8%;
-  width: fit-content;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .imgUser {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border-radius: 10px;
+}
+.username{
+  font-size: 16px;
+  font-weight: 500;
 }

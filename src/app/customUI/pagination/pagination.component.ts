@@ -1,11 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.css',
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
   @Input() totalItems: any; // tong sl item
   @Input() currentPage: any; // trang hien tai
   @Input() itemPerPage: any; // sl item 1 trang
@@ -17,31 +25,38 @@ export class PaginationComponent implements OnInit {
   @Output() emitItemPerPage: EventEmitter<string> = new EventEmitter<string>();
   totalPages = 0; // tong so trang
   pages: number[] = [];
-
-  ngOnInit(): void {
-    if (this.totalItems != null) {
-      // tong so trang = tong so luong item / so sp 1 trang
-      this.totalPages = Math.ceil(this.totalItems / this.itemPerPage);
-      // alert(this.totalPages);
-      this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-      this.itemStart = this.itemEnd;
-      this.itemEnd = this.itemStart + this.itemPerPage - 1;
+  protected isFirstRun: boolean = true;
+  ngOnInit(): void {}
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.totalItems) {
+      if (this.totalItems != 0) {
+        console.log(this.totalItems);
+        // tong so trang = tong so luong item / so sp 1 trang
+        this.totalPages = Math.ceil(this.totalItems / this.itemPerPage);
+        // console.log(this.totalPages);
+        this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
+        console.log(this.itemStart);
+        if (this.isFirstRun) {
+          this.itemStart = this.itemEnd;
+          this.itemEnd = this.itemStart + this.itemPerPage - 1;
+          this.isFirstRun = false;
+        }
+      }
     }
   }
-
   //function
-  pageClicked(page: number) {
+  pageClicked(page: number, type: string) {
+    if (type == 'next') {
+      this.itemStart = this.itemEnd + 1;
+      this.itemEnd = this.itemStart + this.itemPerPage - 1;
+      if (this.itemEnd > this.totalItems) {
+        this.itemEnd = this.totalItems;
+      }
+    } else {
+      this.itemStart = this.itemStart - this.itemPerPage;
+      this.itemEnd = this.itemEnd - this.itemPerPage;
+    }
     this.onClick.emit(page);
-  }
-  previousClicked() {
-    this.itemStart = this.itemStart - this.itemPerPage;
-    this.itemEnd = this.itemEnd - this.itemPerPage;
-    console.log(this.itemStart, this.itemEnd);
-  }
-  nextClicked() {
-    this.itemStart = this.itemEnd + 1;
-    this.itemEnd = this.itemStart + this.itemPerPage - 1;
-    console.log(this.itemStart, this.itemEnd);
   }
 
   changeItemPerPage(value: string) {

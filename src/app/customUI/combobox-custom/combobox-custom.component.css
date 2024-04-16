@@ -28,6 +28,7 @@
   height: fit-content;
   background-color: red;
   animation: dropdown 0.3s ease forwards;
+  z-index: 9999;
 }
 .show_modal {
   display: block;

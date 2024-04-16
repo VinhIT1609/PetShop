@@ -22,6 +22,7 @@ import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.compo
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
 import { PaginationComponent } from './customUI/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
+  
   ],
   providers: [
     provideClientHydration()

@@ -1,11 +1,4 @@
-<div
-  class="table_modal"
-  [ngStyle]="{
-    'max-width.px': maxWidth,
-    'max-height.px': maxHeight,
-    'height.px': maxHeight
-  }"
->
+<div class="table_modal">
   <table class="table_custom" [ngStyle]="">
     <thead>
       <tr>
@@ -22,7 +15,9 @@
 
     <tbody class="tbody_scroll">
       <tr *ngFor="let item of paginatedData; index as idx">
-        <td class="header_content"><span><input type="checkbox"></span></td>
+        <td class="header_content">
+          <span><input type="checkbox" /></span>
+        </td>
         <!-- <td>{{ idx + 1 }}</td> -->
         <td class="header_content" *ngFor="let header of tableHeaders">
           {{ item[header["FieldName"]] }}
@@ -32,7 +27,7 @@
   </table>
 </div>
 
-<div class="pagination">
+<!-- <div class="pagination">
   <app-pagination
     [totalItems]="tableContents.length"
     [itemPerPage]="itemPerPageTable"
@@ -42,4 +37,4 @@
     (emitCurr)="bindCurr($event)"
     (emitItemPerPage)="bindPerPage($event)"
   ></app-pagination>
-</div>
+</div> -->

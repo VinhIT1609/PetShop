@@ -18,7 +18,6 @@ export class MainComponent implements OnInit {
   //router
   constructor(private router: Router) { }
   navigateToHome() {
-    console.log('click');
     this.router.navigate(['MainPage']);
   }
 }

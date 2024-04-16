@@ -40,36 +40,30 @@
 </div>
 <!-- control box -->
 <!-- table view start-->
-<div class="toolbox">
-  <input class="search_product" type="text" placeholder="Enter name ..." />
 
-  <div class="btn_delete">
-    <span>
-      <span class="material-symbols-outlined delete_icon"> delete </span>
-      Remove Product
-    </span>
-  </div>
-</div>
-
-<!-- <div class="search_product">
-  <input type="text" placeholder="Enter name ...">
-</div> -->
 <div class="product_table">
+  <div class="toolbox">
+    <input class="search_product" type="text" placeholder="Enter name ..." />
+    <div class="btn_delete">
+      <span>
+        <span class="material-symbols-outlined delete_icon"> delete </span>
+        Remove Product
+      </span>
+    </div>
+  </div>
   <app-tableCustom
     [tableHeaders]="headerProduct"
-    [tableContents]="productList"
-    [actionValues]="actionProductValues"
-    [maxWidth]="custable_maxWidth_Product"
-    [maxHeight]="custable_maxHeight_Product"
+    [tableContents]="productList_fake"
   ></app-tableCustom>
 </div>
+
 <!-- table view end -->
 
 <!-- form add san pham start -->
 
 <div class="modal" [class.open]="isOpenForm" (click)="toggleShowOverlay()">
   <div class="modal_container_form_addsp" (click)="propagation($event)">
-    <div class="modal_close_btn">X</div>
+    <div class="modal_close_btn" (click)="toggleShowOverlay()">X</div>
     <header class="modal_header">
       <i class="header_icon ti-package"></i>
       NEW PRODUCT
@@ -96,7 +90,7 @@
             [value]="'value'"
           ></cbb-custom>
         </div>
-        <div class="cbb_form" style="z-index: 1000;">
+        <div class="cbb_form" style="z-index: 1000">
           <label class="modal-label"> Category : </label>
           <cbb-custom
             [dataSourceChild]="dataCategory"
