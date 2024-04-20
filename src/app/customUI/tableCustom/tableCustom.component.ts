@@ -6,11 +6,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./tableCustom.component.css'],
 })
 export class TableCustomComponent implements OnInit {
+  isEmitted: Boolean = false;
   @Input() tableHeaders: any[] = [];
   @Input() tableContents: any = [];
   @Input() actionValues: any[] = [];
   @Input() itemPerPageTable: any;
   @Input() currentPageTable: any = 1;
+  @Output() outputTableItem: EventEmitter<any> = new EventEmitter<any>();
   itemPerPageArrayTable: any[] = [5, 10, 25, 100]; // số lượng item mỗi trang
   constructor() {}
 
@@ -36,4 +38,8 @@ export class TableCustomComponent implements OnInit {
   bindPerPage(newitemPerPage: string) {
     this.itemPerPageTable = parseInt(newitemPerPage);
   }
+  emitTableItem(tableItem: any) {
+    this.outputTableItem.emit(tableItem);
+  }
+  //function
 }

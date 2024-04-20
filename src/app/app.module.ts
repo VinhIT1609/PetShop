@@ -23,6 +23,7 @@ import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-cus
 import { PaginationComponent } from './customUI/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DialogProductComponent } from './components/admin/main_page/main/master_option/product/components/dialogProduct/dialogProduct.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LogInComponent,
     SingInComponent,
     ComboboxCustomComponent,
-    PaginationComponent
+    PaginationComponent,
+    DialogProductComponent
   ],
   imports: [
     BrowserModule,

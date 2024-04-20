@@ -1,0 +1,61 @@
+<div class="modal" [class.open]="isOpenForm" (click)="toggleShowOverlay()">
+  <div class="modal_container_form_addsp" (click)="propagation($event)">
+    <div class="modal_close_btn" (click)="toggleShowOverlay()">X</div>
+    <header class="modal_header">
+      <i class="header_icon ti-package"></i>
+      NEW PRODUCT
+    </header>
+    <div class="modal_body">
+      <label class="modal-label"> Product Name : </label>
+      <input
+        class="form_input"
+        [(ngModel)]="productObject.ProductName"
+        type="text"
+        id="pd_name"
+      />
+      <label class="modal-label"> Product Image : </label>
+      <div class="d-flex">
+        <input class="form_input" type="text" id="pd_img" />
+        <button style="height: 36px">openfile</button>
+      </div>
+      <label class="modal-label"> Price : </label>
+      <input
+        class="form_input"
+        [(ngModel)]="productObject.Price"
+        type="number"
+        id="pd_price"
+      />
+      <label class="modal-label"> Quantity : </label>
+      <input
+        class="form_input"
+        [(ngModel)]="productObject.Quantity"
+        type="number"
+        id="pd_quantity"
+      />
+      <div class="cbb_form">
+        <label class="modal-label"> Status : </label>
+        <cbb-custom
+          [dataSourceChild]="dataStatus"
+          [displayName]="'status'"
+          [value]="'id'"
+          [(outputItem)]="productObject.StatusID"
+        ></cbb-custom>
+      </div>
+      <div class="cbb_form" style="z-index: 1000">
+        <label class="modal-label"> Category : </label>
+        <cbb-custom
+          [dataSourceChild]="dataCategory"
+          [displayName]="'name'"
+          [value]="'id'"
+          [(outputItem)]="productObject.CategoryID"
+        ></cbb-custom>
+      </div>
+      <label for="" class="modal-label"> Description : </label>
+      <textarea
+        class="descrip_input"
+        [(ngModel)]="productObject.Description"
+      ></textarea>
+      <div class="btn_confirm" (click)="addProduct()"><p>CONFIRM</p></div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,15 @@
-import { CommonModule, JsonPipe } from '@angular/common';
-import { Component, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { ApiServicesService } from '../../../../../../../Services/api-services.service';
+import { Observable } from 'rxjs';
+import { DialogProductComponent } from '../components/dialogProduct/dialogProduct.component';
 
 @Component({
   selector: 'app-masterProduct',
@@ -10,8 +18,8 @@ import { ApiServicesService } from '../../../../../../../Services/api-services.s
 })
 export class MasterProductComponent implements OnInit {
   // CSS value
-
   isOpenForm: boolean = false;
+  isCloseForm: boolean = true;
   //value
   totalProducts: number = 100;
   active: number = 100;
@@ -19,6 +27,9 @@ export class MasterProductComponent implements OnInit {
   outofstock: number = 100;
   productData_sql: any[] = [];
   productList: any[] = [];
+  isEdit: boolean = false;
+  @ViewChild('dialog') dialog!: DialogProductComponent;
+  @Input() productEmitted: any = {};
   //table value
   headerProduct: any[] = [
     { Head: 'Product Name', FieldName: 'ProductName' },
@@ -26,7 +37,7 @@ export class MasterProductComponent implements OnInit {
     { Head: 'Price', FieldName: 'Price' },
     { Head: 'Quantity', FieldName: 'Quantity' },
     { Head: 'Status', FieldName: 'Status' },
-    { Head: 'Category', FieldName: 'Category' },
+    { Head: 'Category', FieldName: 'CategoryName' },
   ];
   // temp data
   productList_fake: any = [
@@ -283,62 +294,42 @@ export class MasterProductComponent implements OnInit {
   ];
   //function
   constructor(private apiservice: ApiServicesService) {}
-  ngOnInit() {
-    this.apiservice.Call_API('Product', 'get')?.subscribe((data) => {
-      this.productData_sql = data;
-      this.productData_sql.forEach((data) => {
-        let product: any = {};
-        product['ProductName'] = data.ProductName;
-        product['Image'] = data.Image;
-        product['Price'] = data.Price;
-        product['Quantity'] = data.Quantity;
-        product['Category'] = data.Category;
-        if (data.Status == 1) {
-          product['Status'] = 'Active';
-        } else {
-          product['Status'] = 'Deactive';
-        }
-        this.productList.push(product);
-      });
-      console.log(this.productData_sql);
-    });
-  }
 
-  addNewPD() {
-    this.isOpenForm = !this.isOpenForm;
+  ngOnInit() {
+    this.initData()?.subscribe((data) => {
+      this.productList.push(...data);
+    });
+    this.productEmitted = null;
   }
-  toggleShowOverlay() {
-    this.isOpenForm = !this.isOpenForm;
-  }
-  propagation(event: Event) {
-    event.stopPropagation();
+  initData(): Observable<any> | null {
+    return this.apiservice.Call_API('Product', 'get');
   }
   // form add san pham
-  isFormSubmited: boolean = false;
-  productObject: any = {
-    productName: '',
-    image: '',
-    price: '',
-    quantity: '',
-    status: '',
-    category: '',
-  };
-  // temp data for form
-  dataStatus: any[] = [
-    {
-      id: 1,
-      status: 'Active',
-      value: true,
-    },
-    {
-      id: 2,
-      status: 'Deactive',
-      value: false,
-    },
-  ];
-  dataCategory: any[] = [
-    { id: 1, name: 'Dog Food Company', value: 'dog_company' },
-    { id: 2, name: 'Cat Food Company', value: 'cat_company' },
-    { id: 3, name: 'Toy Company', value: 'toy_company' },
-  ];
+  addNewPD() {
+    this.dialog.addNewPD();
+  }
+  onOpenEdit(value: string) {
+    this.dialog.onOpenEdit(value);
+  }
+
+  productIDObject: any = {};
+  removeProduct() {
+    debugger;
+    const productEntries = Object.entries(this.productEmitted);
+    if (productEntries.length > 0) {
+      const [firstKey, firstValue] = productEntries[0];
+      this.productIDObject[firstKey] = firstValue;
+      console.log(this.productIDObject);
+      // this.apiservice
+      //   .Call_API('Product/DeleteProduct', 'post', null, this.productIDObject)
+      //   ?.subscribe((x) => {
+      //     if (x[0]['result'] == 1) {
+      //       alert('Xoa thanh cong!');
+      //       this.initData()?.subscribe((x) => (this.productList = x));
+      //     }
+      //   });
+    } else {
+      console.log('No key-value pairs found in this.productEmitted');
+    }
+  }
 }

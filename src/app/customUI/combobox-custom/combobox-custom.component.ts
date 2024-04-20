@@ -1,11 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'cbb-custom',
   templateUrl: './combobox-custom.component.html',
   styleUrl: './combobox-custom.component.css',
 })
-export class ComboboxCustomComponent implements OnInit {
+export class ComboboxCustomComponent implements OnInit, OnChanges {
   // value
   @Input() displayName!: string;
   @Input() value!: string;
@@ -16,7 +24,18 @@ export class ComboboxCustomComponent implements OnInit {
   @Output() outputItemChange = new EventEmitter();
   @Input() isShow = false;
   @Input() placeholder: string = 'Select ...';
-
+  //DATA here !!!
+  @Input() dataSourceChild: any[] = [];
+  ngOnChanges(changes: SimpleChanges): void {
+    debugger;
+    if (changes['outputItem']) {
+      this.dataSourceChild.forEach((x) => {
+        if (changes['outputItem'].currentValue == x[this.value]) {
+          this.nameChooseItem = x[this.displayName];
+        }
+      });
+    }
+  }
   // khi moi khoi tao
   ngOnInit(): void {
     if (this.itemSelected == null) {
@@ -32,21 +51,19 @@ export class ComboboxCustomComponent implements OnInit {
     // }
     // console.log(this.outputItem);
   }
-  //DATA here !!!
-  @Input() dataSourceChild: any[] = [];
 
   //function
   //show item in cbb
   showListItems() {
-    console.log('click!');
     this.isShow = !this.isShow;
   }
+
   // choose item
   onClickSelect(item: any) {
     this.isShow = !this.isShow;
     console.log('item vua chon: ', item);
     this.nameChooseItem = this.subStringSelected(item[this.displayName]) ?? '';
-    // this.emitValue(item.id);
+    this.emitValue(item[this.value]);
     // console.log(value);
     // this.itemSelected = item;
     // console.log(item[this.displayName]);
@@ -60,6 +77,7 @@ export class ComboboxCustomComponent implements OnInit {
   }
   //chuyen gia tri ra ben ngoai parent
   emitValue(value: any) {
+    console.log(value);
     this.outputItem = value;
     this.outputItemChange.emit(value);
   }
