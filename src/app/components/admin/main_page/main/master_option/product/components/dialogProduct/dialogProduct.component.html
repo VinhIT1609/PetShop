@@ -3,7 +3,7 @@
     <div class="modal_close_btn" (click)="toggleShowOverlay()">X</div>
     <header class="modal_header">
       <i class="header_icon ti-package"></i>
-      NEW PRODUCT
+      {{ formTitle }}
     </header>
     <div class="modal_body">
       <label class="modal-label"> Product Name : </label>
@@ -54,8 +54,10 @@
       <textarea
         class="descrip_input"
         [(ngModel)]="productObject.Description"
-      ></textarea>
-      <div class="btn_confirm" (click)="addProduct()"><p>CONFIRM</p></div>
+      ></textarea>  
+      <div class="btn_confirm" (click)="addORupdate()">
+        <p>{{ btnContent }}</p>
+      </div>
     </div>
   </div>
 </div>

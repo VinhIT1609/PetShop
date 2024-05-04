@@ -39,7 +39,7 @@ export class TableCustomComponent implements OnInit {
     this.itemPerPageTable = parseInt(newitemPerPage);
   }
   emitTableItem(tableItem: any) {
-    this.outputTableItem.emit(tableItem);
+    this.outputTableItem.emit(tableItem); 
   }
   //function
 }

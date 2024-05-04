@@ -10,6 +10,7 @@ import {
 import { ApiServicesService } from '../../../../../../../Services/api-services.service';
 import { Observable } from 'rxjs';
 import { DialogProductComponent } from '../components/dialogProduct/dialogProduct.component';
+import { table } from 'console';
 
 @Component({
   selector: 'app-masterProduct',
@@ -30,6 +31,7 @@ export class MasterProductComponent implements OnInit {
   isEdit: boolean = false;
   @ViewChild('dialog') dialog!: DialogProductComponent;
   @Input() productEmitted: any = {};
+
   //table value
   headerProduct: any[] = [
     { Head: 'Product Name', FieldName: 'ProductName' },
@@ -308,28 +310,40 @@ export class MasterProductComponent implements OnInit {
   addNewPD() {
     this.dialog.addNewPD();
   }
-  onOpenEdit(value: string) {
-    this.dialog.onOpenEdit(value);
+
+  // receive function
+  receiveTableItem(tableItem: any) {
+    if (tableItem) {
+      console.log('Received table item in parent:', tableItem);
+      this.productEmitted = tableItem;
+      this.dialog.onOpenEdit(tableItem);
+    }
   }
 
   productIDObject: any = {};
   removeProduct() {
-    debugger;
+    console.log(this.productEmitted);
     const productEntries = Object.entries(this.productEmitted);
     if (productEntries.length > 0) {
       const [firstKey, firstValue] = productEntries[0];
       this.productIDObject[firstKey] = firstValue;
       console.log(this.productIDObject);
-      // this.apiservice
-      //   .Call_API('Product/DeleteProduct', 'post', null, this.productIDObject)
-      //   ?.subscribe((x) => {
-      //     if (x[0]['result'] == 1) {
-      //       alert('Xoa thanh cong!');
-      //       this.initData()?.subscribe((x) => (this.productList = x));
-      //     }
-      //   });
+      this.apiservice
+        .Call_API('Product/DeleteProduct', 'post', null, this.productIDObject)
+        ?.subscribe((x) => {
+          if (x[0]['result'] == 1) {
+            alert('Xoa thanh cong!');
+            this.initData()?.subscribe((x) => (this.productList = x));
+          }
+        });
     } else {
       console.log('No key-value pairs found in this.productEmitted');
     }
+  }
+  // function receive productList from dialog
+  loadProductListAfter_Add_New(data: any[]) {
+    debugger;
+    console.log(data);
+    this.productList = data;
   }
 }

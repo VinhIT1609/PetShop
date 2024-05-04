@@ -30,12 +30,10 @@ export class PaginationComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.totalItems) {
       if (this.totalItems != 0) {
-        console.log(this.totalItems);
         // tong so trang = tong so luong item / so sp 1 trang
         this.totalPages = Math.ceil(this.totalItems / this.itemPerPage);
         // console.log(this.totalPages);
         this.pages = Array.from({ length: this.totalPages }, (_, i) => i + 1);
-        console.log(this.itemStart);
         if (this.isFirstRun) {
           this.itemStart = this.itemEnd;
           this.itemEnd = this.itemStart + this.itemPerPage - 1;

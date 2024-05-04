@@ -30,6 +30,7 @@
 }
 
 .table_custom tbody tr:hover {
+  cursor: pointer;
   transition: 0.3s;
   background-color: #79c1f1;
 }

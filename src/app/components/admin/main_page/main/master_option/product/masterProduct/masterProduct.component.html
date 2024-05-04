@@ -52,12 +52,16 @@
     <app-tableCustom
       [tableHeaders]="headerProduct"
       [tableContents]="productList"
-      (outputTableItem)="onOpenEdit($event)"
+      (outputTableItem)="receiveTableItem($event)"
     ></app-tableCustom>
   </div>
 </div>
 <!-- table view end -->
+
 <!-- form add san pham start -->
-<app-dialogProduct #dialog></app-dialogProduct>
+<app-dialogProduct
+  #dialog
+  (dataSendFromDialog)="loadProductListAfter_Add_New($event)"
+></app-dialogProduct>
 <!-- form add san pham end-->
 <!-- form chi tiet san pham -->

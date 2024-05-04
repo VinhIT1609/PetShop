@@ -82,6 +82,7 @@
   text-align: center;
   justify-content: center;
   margin-left: 200px;
+  cursor: pointer;
 }
 .btn_confirm > p {
   margin-top: 8px;

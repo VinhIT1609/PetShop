@@ -27,11 +27,14 @@ export class ComboboxCustomComponent implements OnInit, OnChanges {
   //DATA here !!!
   @Input() dataSourceChild: any[] = [];
   ngOnChanges(changes: SimpleChanges): void {
-    debugger;
+    // debugger;
     if (changes['outputItem']) {
       this.dataSourceChild.forEach((x) => {
         if (changes['outputItem'].currentValue == x[this.value]) {
           this.nameChooseItem = x[this.displayName];
+        }
+        if (changes['outputItem'].currentValue == '') {
+          this.nameChooseItem = this.placeholder;
         }
       });
     }
@@ -39,7 +42,6 @@ export class ComboboxCustomComponent implements OnInit, OnChanges {
   // khi moi khoi tao
   ngOnInit(): void {
     if (this.itemSelected == null) {
-      // console.log('dataSource null !!!');
       this.itemSelected = {};
       this.nameChooseItem = this.placeholder;
     }
@@ -61,7 +63,6 @@ export class ComboboxCustomComponent implements OnInit, OnChanges {
   // choose item
   onClickSelect(item: any) {
     this.isShow = !this.isShow;
-    console.log('item vua chon: ', item);
     this.nameChooseItem = this.subStringSelected(item[this.displayName]) ?? '';
     this.emitValue(item[this.value]);
     // console.log(value);
@@ -77,7 +78,6 @@ export class ComboboxCustomComponent implements OnInit, OnChanges {
   }
   //chuyen gia tri ra ben ngoai parent
   emitValue(value: any) {
-    console.log(value);
     this.outputItem = value;
     this.outputItemChange.emit(value);
   }
