@@ -2,21 +2,27 @@
   <table class="table_custom">
     <thead>
       <tr>
-        <th class="header">
-          <span><input type="checkbox" name="" id="" /></span>
-        </th>
+        <th class="header"></th>
         <ng-container *ngFor="let itemHeader of tableHeaders">
           <th class="header productNameHeader">
-            <p class="wrap_content">{{ itemHeader["Head"] }}</p>
+            <span class="wrap_content">{{ itemHeader["Head"] }}</span>
           </th>
         </ng-container>
       </tr>
     </thead>
 
     <tbody class="tbody_scroll">
-      <tr (click)="emitTableItem(item)" *ngFor="let item of paginatedData; index as idx">
+      <tr
+        (click)="emitTableItem(item)"
+        *ngFor="let item of paginatedData; index as idx"
+      >
         <td class="content">
-          <span><input type="checkbox" /></span>
+          <input
+            class="chkb_item"
+            type="checkbox"
+            id="{{ item.ProductID }}"
+            (click)="onCheckboxClick($event, item.ProductID)"
+          />
         </td>
         <!-- <td>{{ idx + 1 }}</td> -->
         <td class="content" *ngFor="let header of tableHeaders">

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-menu',
@@ -6,6 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './menu.component.css',
 })
 export class MenuComponent {
+
+  constructor(private router : Router){}
+
   //css value
   isActive: boolean = false;
   activedItem!: number;
@@ -32,5 +37,8 @@ export class MenuComponent {
   //function
   handleClick(id: number) {
     this.activedItem = id;
+  }
+  backtoMainPage(){
+    this.router.navigate(['/MainPage'])
   }
 }

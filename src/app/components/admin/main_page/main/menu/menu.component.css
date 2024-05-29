@@ -5,10 +5,12 @@
   display: flex;
   justify-content: center;
 }
+
 .iconMenu {
 }
-.menuItem{
+.menuItem {
   width: 100px;
+  font-weight: 600;
 }
 .list-group-item:hover {
   background-color: #2fa4c8;
@@ -21,4 +23,9 @@
   background-color: #2fa4c8;
   border-color: #2fa4c8;
   transition: 0.5s;
+}
+.box_content {
+  text-decoration: none;
+  color: black;
+  display: flex;
 }

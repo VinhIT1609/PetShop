@@ -7,6 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class TableCustomComponent implements OnInit {
   isEmitted: Boolean = false;
+  arr_pID: any = [];
   @Input() tableHeaders: any[] = [];
   @Input() tableContents: any = [];
   @Input() actionValues: any[] = [];
@@ -38,8 +39,24 @@ export class TableCustomComponent implements OnInit {
   bindPerPage(newitemPerPage: string) {
     this.itemPerPageTable = parseInt(newitemPerPage);
   }
-  emitTableItem(tableItem: any) {
-    this.outputTableItem.emit(tableItem); 
-  }
+
   //function
+  emitTableItem(tableItem: any) {
+    this.outputTableItem.emit(tableItem);
+  }
+  onCheckboxClick(event: Event, pdID: any) {
+    event.stopPropagation();
+    console.log(pdID);
+    this.arr_pID.forEach((element: any, index: any) => {
+      console.log(element);
+      if (element === pdID) {
+        // this.arr_pID.splice(index, 1);
+        console.log(true);
+      } else {
+        console.log(false);
+        this.arr_pID.push(pdID);
+      }
+    });
+    console.log(this.arr_pID);
+  }
 }

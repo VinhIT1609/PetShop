@@ -1,22 +1,22 @@
 <div class="listMenu text-center">
   <ul class="list-group">
-    <a
+    <li
       *ngFor="let menuItem of menuItems; let idx = index"
-      [routerLink]="menuItem === 'Home' ? '' : menuItem"
-      class="rounded-pill"
-      style="text-decoration: none"
+      class="list-group-item rounded-pill"
+      [class.isActive]="isActive"
+      (click)="handleClick(idx)"
+      [ngClass]="{ actived: activedItem === idx }"
     >
-      <li
-        class="list-group-item"
-        [class.isActive]="isActive"
-        (click)="handleClick(idx)"
-        [ngClass]="{ actived: activedItem === idx }"
-      >
+      <a class="box_content" [routerLink]="menuItem === 'Home' ? '' : menuItem">
         <div class="material-symbols-outlined iconMenu">
           {{ iconItems[idx] }}
         </div>
-        <div class="menuItem">{{ menuItem }}</div>
-      </li>
-    </a>
+        <div class="menuItem">{{ menuItem.toUpperCase() }}</div>
+      </a>
+    </li>
+
+    <li class="list-group-item rounded-pill" (click)="backtoMainPage()">
+      <div class="menuItem">MAIN PAGE</div>
+    </li>
   </ul>
 </div>

@@ -32,8 +32,6 @@ const routes: Routes = [
   { path: 'Signin', component: SingInComponent },
   { path: 'CbbCustom', component: ComboboxCustomComponent },
   { path: 'tableCustom', component: TableCustomComponent }
-
-  // { path: '/Account', component: MasterAccountComponent }
 ];
 
 @NgModule({
