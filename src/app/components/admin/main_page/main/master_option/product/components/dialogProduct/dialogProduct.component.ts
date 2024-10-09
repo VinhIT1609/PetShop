@@ -1,5 +1,6 @@
+import { NotificationService } from './../../../../../../../../services/notification.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ApiServicesService } from '../../../../../../../../Services/api-services.service';
+import { ApiServicesService } from '../../../../../../../../services/api-services.service';
 import { Observable } from 'rxjs';
 import { table } from 'console';
 
@@ -11,142 +12,138 @@ import { table } from 'console';
 export class DialogProductComponent implements OnInit {
   isOpenForm: boolean = false;
   isEdit: boolean = true;
-  titleArray: string[] = ['NEW PRODUCT', 'PRODUCT INFORMATION'];
+  titleArray: string[] = ['ADD NEW PRODUCT', 'PRODUCT INFORMATION'];
   formTitle: string = this.titleArray[0];
   productListTemp: any[] = [];
-  btnContentArr: string[] = ['CONFIRM', 'UPDATE'];
+  btnContentArr: string[] = ['CONFIRM PRODUCT', 'UPDATE PRODUCT'];
   btnContent: string = 'CONFIRM';
-  @Output() dataSendFromDialog: EventEmitter<any[]> = new EventEmitter<any[]>();
+  @Output() callReloadTable_Product_Dialog: EventEmitter<any> =
+    new EventEmitter<any>();
   // Object
-  productObject: any = {};
+  productObject: any = {
+    ProductCode: '',
+    ProductName: '',
+    // Image: '',
+    Price: '',
+    Quantity: '',
+    StatusID: '',
+    CategoryID: '',
+    Description: '',
+  };
   productList$!: Observable<any>;
   productID_for_update!: any;
   productObject_update: any = {};
-  constructor(private apiservice: ApiServicesService) {}
-
+  constructor(
+    private apiservice: ApiServicesService,
+    private noti: NotificationService
+  ) {}
+  //  value of form
+  fontSize: any = 20 + 'px';
   //CRUD
   initData(): Observable<any> | null {
     return this.apiservice.Call_API('Product', 'get');
   }
 
   ngOnInit() {}
-
-  addNewPD() {
-    this.isEdit = false;
-    this.clearProductData();
-    this.isOpenForm = !this.isOpenForm;
-  }
-  onOpenEdit(value: string) {
+  onOpenEdit(value?: any) {
     this.toggleShowOverlay(value);
   }
   toggleShowOverlay(value?: any) {
-    if (value) {
-      console.log('before update: ', value);
+    if (!value) {
+      this.isEdit = false;
+      this.formTitle = this.titleArray[0];
+      this.btnContent = this.btnContentArr[0];
+      this.isOpenForm = !this.isOpenForm;
+      this.clearProductData();
+    } else {
       this.isEdit = true;
       this.formTitle = this.titleArray[1];
       this.btnContent = this.btnContentArr[1];
       this.bindProductData(value);
       this.isOpenForm = !this.isOpenForm;
-    } else {
-      this.isEdit = false;
-      this.formTitle = this.titleArray[0];
-      this.btnContent = this.btnContentArr[0];
-      this.isOpenForm = !this.isOpenForm;
     }
   }
   clearProductData() {
-    this.productObject.ProductName = '';
-    this.productObject.Price = '';
-    this.productObject.Quantity = '';
-    this.productObject.StatusID = '';
-    this.productObject.CategoryID = '';
-    this.productObject.Description = '';
+    // this.productObject.Image = '';
+    for (let key in this.productObject) {
+      if (this.productObject.hasOwnProperty(key)) {
+        this.productObject[key] = '';
+      }
+    }
   }
   bindProductData(value: any) {
     this.productObject.ProductID = value['ProductID'];
-    this.productObject.ProductName = value['ProductName'];
-    this.productObject.Price = value['Price'];
-    this.productObject.Quantity = value['Quantity'];
-    this.productObject.StatusID = value['Status'];
-    this.productObject.CategoryID = value['CategoryID'];
-    this.productObject.Description = value['Description'];
-    // this.productObject.Image = value['Image'];
-    this.productObject.CreatedDate = value['CreatedDate'];
+    for (let key in value) {
+      if (this.productObject.hasOwnProperty(key)) {
+        this.productObject[key] = value[key];
+      }
+    }
   }
   propagation(event: Event) {
     event.stopPropagation();
   }
-
+  // thêm sản phẩm mới
   addProduct() {
-    // console.log(this.productObject);
+    console.log(this.productObject);
     this.apiservice
       .Call_API('Product/AddProduct', 'post', null, this.productObject)
       ?.subscribe((x) => {
         if (x[0]['result'] == 1) {
-          alert('Add thanh cong!');
+          this.sendSucess('THÊM SẢN PHẨM', 'Sản phẩm đã được thêm !', 3000);
           this.reloadData();
+          this.isOpenForm = !this.isOpenForm;
+        } else {
+          this.sendError('THÊM SẢN PHẨM', 'Thất bại !', 3000);
         }
       });
   }
+  // cập nhật sản phẩm
   updateProduct() {
-    console.log('after update:', this.productObject);
     const currentDate = new Date();
     const timezoneOffset = -7 * 60; // Vietnam is usually UTC+7
     const adjustedDate = new Date(
       currentDate.getTime() - timezoneOffset * 60000
     );
     const now = adjustedDate.toISOString().replace('Z', '');
-    console.log(now);
-
     this.productObject.ModifiedDate = now;
-    console.log(this.productObject);
     this.apiservice
       .Call_API('Product/UpdateProduct', 'post', null, this.productObject)
       ?.subscribe((x) => {
         if (x[0]['result'] == 1) {
-          alert('update success !');
-          this.reloadData();
+          this.sendSucess(
+            'CẬP NHẬT SẢN PHẨM',
+            'Sản phẩm đã được cập nhật !',
+            3000
+          );
+          this.isOpenForm = !this.isOpenForm;
         } else {
-          alert('update failed !');
+          this.sendError('CẬP NHẬT SẢN PHẨM', 'Thất bại !', 3000);
+        }
+      });
+    this.reloadData();
+  }
+
+  removeProduct(listProduct: any[]) {
+    console.log(listProduct);
+    const tempList: any[] = [];
+    listProduct.forEach((product) => {
+      tempList.push(product.ProductID);
+    });
+    this.apiservice
+      .Call_API('Product/DeleteProduct', 'post', null, tempList.toString())
+      ?.subscribe((x) => {
+        if (x[0]['result'] == 1) {
+          this.sendSucess(
+            'XÓA SẢN PHẨM',
+            'Đã xóa ' + tempList.length + ' sản phẩm!',
+            3000
+          );
+          this.reloadData();
         }
       });
   }
-  productIDObject: any = {};
-  removeProduct() {
-    // const productEntries = Object.entries(this.productEmitted);
-    // if (productEntries.length > 0) {
-    //   const [firstKey, firstValue] = productEntries[0];
-    //   this.productIDObject[firstKey] = firstValue;
-    //   console.log(this.productIDObject);
-    //   this.apiservice
-    //     .Call_API('Product/DeleteProduct', 'post', null, this.productIDObject)
-    //     ?.subscribe((x) => {
-    //       if (x[0]['result'] == 1) {
-    //         alert('Xoa thanh cong!');
-    // this.initData()?.subscribe((x) => (this.productList = x));
-    //       }
-    //     });
-    // } else {
-    //   console.log('No key-value pairs found in this.productEmitted');
-    // }
-  }
   reloadData() {
-    const productList$ = this.initData();
-    if (productList$ !== null && productList$ !== undefined) {
-      productList$.subscribe({
-        next: (pList) => {
-          //pList is productList
-          console.log('Data from initData dialog:', pList);
-          // Điều gì đó khác sẽ xảy ra ở đây dựa trên dữ liệu được trả về
-          this.dataSendFromDialog.emit(pList);
-        },
-        error: (error) => {
-          console.error('Error while fetching initData:', error);
-        },
-      });
-    } else {
-      console.log('initData() returned null or undefined.');
-    }
+    this.callReloadTable_Product_Dialog.emit('reload table');
   }
   addORupdate() {
     if (this.isEdit) {
@@ -154,6 +151,16 @@ export class DialogProductComponent implements OnInit {
     } else {
       this.addProduct();
     }
+  }
+  // call Notification Service
+  sendSucess(title: string, msg: string, time: number) {
+    this.noti.success(title, msg, 3000);
+  }
+  sendError(title: string, msg: string, time: number) {
+    this.noti.error(title, msg, 3000);
+  }
+  sendWarning(title: string, msg: string, time: number) {
+    this.noti.warning(title, msg, 3000);
   }
   // temp data for form
   dataStatus: any[] = [
@@ -165,6 +172,11 @@ export class DialogProductComponent implements OnInit {
     {
       id: 2,
       status: 'Deactive',
+      value: false,
+    },
+    {
+      id: 3,
+      status: 'Disabled',
       value: false,
     },
   ];

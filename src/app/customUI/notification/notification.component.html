@@ -1,0 +1,26 @@
+<div class="noficationList">
+  <ng-container *ngFor="let item of notifications">
+    <div
+      class="noficationBox"
+      [style.background-color]="getBG_Notification(item.type)"
+      ngClass="notification.class"
+    >
+      <div class="material-symbols-outlined iconNofi">
+        <ng-container [ngSwitch]="item.type">
+          <ng-container *ngSwitchCase="0">{{ successIcon }}</ng-container>
+          <ng-container *ngSwitchCase="1">{{ warningIcon }}</ng-container>
+          <ng-container *ngSwitchCase="2">{{ errorIcon }}</ng-container>
+          <ng-container *ngSwitchCase="3">{{ infoIcon }}</ng-container>
+        </ng-container>
+      </div>
+
+      <div class="title_msg">
+        <div class="title">
+          <strong>{{ item.title }}</strong>
+        </div>
+        <div class="msg">{{ item.msg }}</div>
+      </div>
+      <div class="material-symbols-outlined close">close</div>
+    </div>
+  </ng-container>
+</div>

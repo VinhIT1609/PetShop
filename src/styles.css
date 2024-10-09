@@ -1,6 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+/* reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+}
 
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+/* reset CSS */
+:root {
+  --shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  --border-radius-container: 10px;
+  --gradient: linear-gradient(
+    92.88deg,
+    #455eb5 9.16%,
+    #5643cc 43.89%,
+    #673fd7 64.72%
+  );
+}
 html,
 body {
   width: 100vw;
+  font-family: "Roboto Flex", sans-serif;
+}
+
+.noSelect {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
 }

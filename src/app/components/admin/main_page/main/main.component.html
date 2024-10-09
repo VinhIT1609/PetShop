@@ -1,5 +1,7 @@
-<div class="row w-100 p-0 m-0">
-  <div class="col-2 p-0">
+<app-notification></app-notification>
+<div class="row w-100 p-0 m-0 background-admin">
+  <!-- phần bên phải -->
+  <div class="col-2 p-0 admin-left-column">
     <div class="box_menu_field">
       <div class="d-flex flex-column align-items-center gap-3">
         <div class="logo">
@@ -9,13 +11,16 @@
           <app-menu></app-menu>
         </div>
       </div>
-      <div class="row d-flex justify-content-center">
+      <!-- <div class="row d-flex justify-content-center">
         <button class="btn_leave" (click)="navigateToHome()">Leave</button>
-      </div>
+      </div> -->
     </div>
   </div>
-  <div class="col-10 p-0">
+  <!-- phần bên trái -->
+  <div class="col-10 admin-right-column">
     <app-header_master></app-header_master>
-    <router-outlet></router-outlet>
+    <div class="container-admin-router-outlet">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

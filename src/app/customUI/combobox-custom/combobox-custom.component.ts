@@ -14,22 +14,23 @@ import {
   styleUrl: './combobox-custom.component.css',
 })
 export class ComboboxCustomComponent implements OnInit, OnChanges {
-  // value
+  // giá trị hiển thị trên cbb và giá trị
   @Input() displayName!: string;
   @Input() value!: string;
-
   itemSelected!: any;
   nameChooseItem!: string;
+
+
   @Input() outputItem: any = '';
-  @Output() outputItemChange = new EventEmitter();
+  @Output() outputItemChange: EventEmitter<any> = new EventEmitter();
   @Input() isShow = false;
   @Input() placeholder: string = 'Select ...';
-  //DATA here !!!
-  @Input() dataSourceChild: any[] = [];
+  // dữ liệu của cbb
+  @Input() dataInput: any[] = [];
+
   ngOnChanges(changes: SimpleChanges): void {
-    // debugger;
     if (changes['outputItem']) {
-      this.dataSourceChild.forEach((x) => {
+      this.dataInput.forEach((x) => {
         if (changes['outputItem'].currentValue == x[this.value]) {
           this.nameChooseItem = x[this.displayName];
         }
@@ -39,52 +40,37 @@ export class ComboboxCustomComponent implements OnInit, OnChanges {
       });
     }
   }
-  // khi moi khoi tao
   ngOnInit(): void {
     if (this.itemSelected == null) {
       this.itemSelected = {};
       this.nameChooseItem = this.placeholder;
     }
-    // filter
-    // let dataSourceFiltered = this.dataSourceChild.filter(x => x.id == this.outputItem);
-    // if (dataSourceFiltered.length > 0) {
-    //   this.itemSelected = dataSourceFiltered[0];
-    //   this.nameChooseItem = this.itemSelected[this.displayName] ?? '';
-    // }
-    // console.log(this.outputItem);
   }
 
   //function
-  //show item in cbb
+  //bật tắt modal của combobox
   showListItems() {
     this.isShow = !this.isShow;
   }
 
-  // choose item
+  // thay đổi khi chọn
   onClickSelect(item: any) {
     this.isShow = !this.isShow;
     this.nameChooseItem = this.subStringSelected(item[this.displayName]) ?? '';
-    this.emitValue(item[this.value]);
-    // console.log(value);
-    // this.itemSelected = item;
-    // console.log(item[this.displayName]);
+    this.emitValue(item[this.value]); // chuyển dữ liệu ra bên ngoài
   }
-  // chuyen string qua 11 ky tu thanh ...
+  // khi tên của một data vượt quá 11 ký tự thì các ký tự sau thay thế thành '...'
   subStringSelected(value: string): string {
     if (value.length > 12) {
       return value.substring(0, 11) + '...';
     }
     return value;
   }
-  //chuyen gia tri ra ben ngoai parent
+  
+  //chuyển value ra bên ngoài cha
   emitValue(value: any) {
     this.outputItem = value;
+    console.log(this.outputItem);
     this.outputItemChange.emit(value);
   }
-
-  itemCbb: any = {
-    id: null,
-    loaisp: 'food',
-    tensp: 'Bot Chien',
-  };
 }

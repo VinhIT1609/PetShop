@@ -1,0 +1,8 @@
+<input
+  [type]="typeInput"
+  [placeholder]="placeholderInput"
+  [ngStyle]="{ 'font-size': fontSizeInput }"
+  [value]="internalValue"
+  (input)="onInputChange($event)"
+  (keydown.enter)="enter($event)"
+/>

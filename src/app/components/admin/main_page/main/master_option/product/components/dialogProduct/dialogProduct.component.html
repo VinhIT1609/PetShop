@@ -6,57 +6,87 @@
       {{ formTitle }}
     </header>
     <div class="modal_body">
-      <label class="modal-label"> Product Name : </label>
-      <input
-        class="form_input"
-        [(ngModel)]="productObject.ProductName"
-        type="text"
-        id="pd_name"
-      />
-      <label class="modal-label"> Product Image : </label>
-      <div class="d-flex">
-        <input class="form_input" type="text" id="pd_img" />
-        <button style="height: 36px">openfile</button>
+      <div class="modal-fields">
+        <div class="modal-label">Code :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter product name ..."
+          [(ngModel)]="productObject.ProductCode"
+        ></app-input-custom>
       </div>
-      <label class="modal-label"> Price : </label>
-      <input
-        class="form_input"
-        [(ngModel)]="productObject.Price"
-        type="number"
-        id="pd_price"
-      />
-      <label class="modal-label"> Quantity : </label>
-      <input
-        class="form_input"
-        [(ngModel)]="productObject.Quantity"
-        type="number"
-        id="pd_quantity"
-      />
-      <div class="cbb_form">
-        <label class="modal-label"> Status : </label>
+      <div class="modal-fields">
+        <div class="modal-label">Name :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter product code ..."
+          [(ngModel)]="productObject.ProductName"
+        ></app-input-custom>
+      </div>
+      <div class="modal-fields">
+        <div class="modal-label">Image :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="file"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter product image ..."
+        ></app-input-custom>
+      </div>
+      <div class="modal-fields">
+        <div class="modal-label">Price :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="number"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter price ..."
+          [(ngModel)]="productObject.Price"
+        ></app-input-custom>
+      </div>
+      <div class="modal-fields">
+        <div class="modal-label">Quantity :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="number"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter Quantity ..."
+          [(ngModel)]="productObject.Quantity"
+        ></app-input-custom>
+      </div>
+      <div class="cbb_form model-fields">
+        <div class="modal-label">Status :</div>
         <cbb-custom
-          [dataSourceChild]="dataStatus"
+          class="cbb-add-form"
+          [dataInput]="dataStatus"
           [displayName]="'status'"
           [value]="'id'"
           [(outputItem)]="productObject.StatusID"
         ></cbb-custom>
       </div>
-      <div class="cbb_form" style="z-index: 1000">
-        <label class="modal-label"> Category : </label>
+      <div class="cbb_form model-fields" style="z-index: 1000">
+        <div class="modal-label">Category :</div>
         <cbb-custom
-          [dataSourceChild]="dataCategory"
+          class="cbb-add-form"
+          [dataInput]="dataCategory"
           [displayName]="'name'"
           [value]="'id'"
           [(outputItem)]="productObject.CategoryID"
         ></cbb-custom>
       </div>
-      <label for="" class="modal-label"> Description : </label>
-      <textarea
-        class="descrip_input"
-        [(ngModel)]="productObject.Description"
-      ></textarea>  
-      <div class="btn_confirm" (click)="addORupdate()">
-        <p>{{ btnContent }}</p>
+      <div class="modal-fields">
+        <div class="modal-label">Description :</div>
+        <textarea
+          class="descrip_input"
+          [ngStyle]="{ 'font-size': fontSize }"
+          [(ngModel)]="productObject.Description"
+        ></textarea>
+      </div>
+      <div class="dialogButton">
+        <button class="button-36" role="button" (click)="addORupdate()">
+          <p>{{ btnContent }}</p>
+        </button>
       </div>
     </div>
   </div>

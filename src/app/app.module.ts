@@ -6,9 +6,9 @@ import { NavComponent } from './components/user/homepage/nav/nav.component';
 import { HomeComponent } from './components/user/homepage/home/home.component';
 import { HeaderComponent } from './components/user/homepage/header/header.component';
 import { TableCustomComponent } from './customUI/tableCustom/tableCustom.component';
-import { MenuComponent } from './components/admin/main_page/main/menu/menu.component';
+import { MenuComponent } from './components/admin/main_page/main/admin_menu/menu.component';
 import { MainComponent } from './components/admin/main_page/main/main.component';
-import { UserAvatarComponent } from './components/admin/main_page/main/menu/userAvatar/userAvatar.component';
+import { UserAvatarComponent } from './components/admin/main_page/main/header_master/userAvatar/userAvatar.component';
 import { MasterAccountComponent } from './components/admin/main_page/main/master_option/account/masterAccount/masterAccount.component';
 import { MasterBranchComponent } from './components/admin/main_page/main/master_option/branch/masterBranch/masterBranch.component';
 import { MasterKeepingComponent } from './components/admin/main_page/main/master_option/keeping/masterKeeping/masterKeeping.component';
@@ -20,10 +20,13 @@ import { Header_masterComponent } from './components/admin/main_page/main/header
 import { LogInComponent } from './components/Login_Signin/log-in/log-in.component';
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
-import { PaginationComponent } from './customUI/pagination/pagination.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DialogProductComponent } from './components/admin/main_page/main/master_option/product/components/dialogProduct/dialogProduct.component';
+import { NotificationComponent } from './customUI/notification/notification.component';
+import { PaginationComponent } from './customUI/tableCustom/pagination/pagination.component';
+import { InputCustomComponent } from './customUI/input-custom/input-custom.component';
+import { DialogPDCategoryComponent } from './components/admin/main_page/main/master_option/product/components/dialogPDCategory/dialogPDCategory.component';
 
 @NgModule({
   declarations: [
@@ -46,15 +49,18 @@ import { DialogProductComponent } from './components/admin/main_page/main/master
     LogInComponent,
     SingInComponent,
     ComboboxCustomComponent,
+    DialogProductComponent,
+    DialogPDCategoryComponent,
+    NotificationComponent,
     PaginationComponent,
-    DialogProductComponent
+    InputCustomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
-  
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideClientHydration()

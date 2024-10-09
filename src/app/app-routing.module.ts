@@ -13,10 +13,14 @@ import { LogInComponent } from './components/Login_Signin/log-in/log-in.componen
 import { SingInComponent } from './components/Login_Signin/sing-in/sing-in.component';
 import { ComboboxCustomComponent } from './customUI/combobox-custom/combobox-custom.component';
 import { TableCustomComponent } from './customUI/tableCustom/tableCustom.component';
+import { InputCustomComponent } from './customUI/input-custom/input-custom.component';
+import { DialogPDCategoryComponent } from './components/admin/main_page/main/master_option/product/components/dialogPDCategory/dialogPDCategory.component';
 
 const routes: Routes = [
   {
-    path: 'Admin', component: MainComponent, children: [
+    path: 'Admin',
+    component: MainComponent,
+    children: [
       { path: 'Account', component: MasterAccountComponent },
       { path: 'Branch', component: MasterBranchComponent },
       { path: 'Product', component: MasterProductComponent },
@@ -31,11 +35,13 @@ const routes: Routes = [
   { path: 'Login', component: LogInComponent },
   { path: 'Signin', component: SingInComponent },
   { path: 'CbbCustom', component: ComboboxCustomComponent },
-  { path: 'tableCustom', component: TableCustomComponent }
+  { path: 'tableCustom', component: TableCustomComponent },
+  { path: 'inputCustom', component: InputCustomComponent },
+  { path: 'PDcategoryForm', component: DialogPDCategoryComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

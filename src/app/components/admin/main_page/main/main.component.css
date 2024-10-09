@@ -1,12 +1,40 @@
+.background-admin {
+  background-color: #f3f3f1;
+  height: 100vh;
+}
+
+.admin-left-column {
+  height: inherit;
+}
+
+.admin-right-column {
+  padding: 0;
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-right: 10px;
+  height: inherit;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.admin-right-column::-webkit-scrollbar {
+  width: 3px;
+  background-color: gainsboro;
+}
+
+.admin-right-column::-webkit-scrollbar-thumb {
+  background-color: #bdbdbd;
+  border-radius: 20px;
+}
+
 .box_menu_field {
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  padding: 20px 10px;
-  background-color: rgb(73, 119, 227);
-  gap: 20px;
+  padding-top: 20px;
   justify-content: space-between;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
 }
 .logo {
   display: flex;
@@ -18,7 +46,7 @@
 }
 
 .list_menu_admin {
-  width: 70%;
+  width: 100%;
   min-width: 200px;
 }
 
@@ -38,4 +66,12 @@
 .master_page {
   padding: 0%;
   background-color: white;
+}
+/* phần router */
+.container-admin-router-outlet {
+  width: 100%;
+  height: fit-content;
+  background-color: #ffff;
+  border-radius: var(--border-radius-container);
+  box-shadow: var(--shadow);
 }

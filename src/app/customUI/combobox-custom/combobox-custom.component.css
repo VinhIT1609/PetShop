@@ -1,33 +1,47 @@
-.combobox_custom {
-  border: 1px solid #000000;
+.fake_mainpage {
+  width: 150px;
+  height: 50px;
+  margin: 50px;
+}
+.cbb-custom {
+  box-shadow: 3px 3px 2px #ccc;
   border-radius: 5px;
-  width: 9rem;
-  height: 2rem;
-  background-color: #eee;
+}
+.box_content {
+  border-radius: 5px;
+  border: 1px solid #d5d5d5;
+  width: 100%;
+  height: 100%;
+  background-color: #d4d4d4;
   cursor: pointer;
 }
 .cbb_content {
-  position: relative;
   display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 .content {
-  position: absolute;
-  top: 0.2rem;
-  left: 0.5rem;
+  display: flex;
+  width: 70%;
+  padding-left: 5px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
 }
 .expand_arrow {
-  position: absolute;
-  right: 0.3rem;
-  top: 0.2rem;
+  display: flex;
+  justify-content: end;
+  width: 30%;
+  font-size: 30px;
 }
 .modal_cbb {
-  position: relative;
-  left: 0.5rem;
+  position: absolute;
   display: none;
-  width: 8%;
   height: fit-content;
-  background-color: red;
+  width: inherit;
   animation: dropdown 0.3s ease forwards;
+  background-color: #fbfbfb;
   z-index: 9999;
 }
 .show_modal {
@@ -35,17 +49,17 @@
 }
 
 .option_cbb {
-  background-color: #fff;
-  border: 1px solid black;
-  width: 130px;
-  height: max-content;
+  border: 1px solid rgb(182, 182, 182);
+  width: inherit;
   text-align: center;
   cursor: pointer;
-  transition: 0.5s;
+  transition: 0.3s;
+  font-size: 18px;
+  font-weight: 500;
 }
 .option_cbb:hover {
-  background-color: #a69f9f;
-  transition: 0.5s;
+  background-color: #f5f5f5;
+  transition: 0.3s;
 }
 
 /* animation */

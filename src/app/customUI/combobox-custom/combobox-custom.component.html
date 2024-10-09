@@ -1,17 +1,18 @@
-<div class="combobox_custom" (click)="showListItems()">
-  <div class="cbb_content">
-    <div class="content">{{ nameChooseItem }}</div>
-    <div class="material-symbols-outlined expand_arrow">expand_more</div>
+<div class="cbb-custom">
+  <div class="box_content" (click)="showListItems()">
+    <div class="cbb_content">
+      <div class="content">{{ nameChooseItem }}</div>
+      <div class="material-symbols-outlined expand_arrow">expand_more</div>
+    </div>
+  </div>
+  <div class="modal_cbb" [class.show_modal]="isShow">
+    <ng-container *ngFor="let item of dataInput">
+      <div class="option_cbb" (click)="onClickSelect(item)">
+        {{ item[displayName] }}
+      </div>
+    </ng-container>
   </div>
 </div>
-<div class="modal_cbb" [class.show_modal]="isShow">
-  <ng-container *ngFor="let item of dataSourceChild">
-    <div class="option_cbb" (click)="onClickSelect(item)">
-      {{ item[displayName] }}
-    </div>
-  </ng-container>
-</div>
-<!-- test -->
 
 <!-- cach dung -->
 <!-- <div class="cbb_value">

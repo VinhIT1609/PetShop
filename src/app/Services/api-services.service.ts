@@ -12,20 +12,26 @@ export class ApiServicesService {
   };
 
   constructor(private httprequest: HttpClient) {
-      this.httpOptions.headers.append('Content-Type', 'application/json');
-      this.httpOptions.headers.append('Content-Type', 'multipart/form-data');
+    this.httpOptions.headers.append('Content-Type', 'application/json');
+    this.httpOptions.headers.append('Content-Type', 'multipart/form-data');
   }
 
-  public Call_API(alias: string, type: string, dataname?: string | null, data?: any) {
+  public Call_API(
+    alias: string,
+    type: string,
+    dataname?: string | null,
+    data?: any
+  ) {
     var url = this.REST_API_SERVER + alias;
     if (type == 'post') {
       var formdata = new FormData();
       if (dataname) {
         formdata.append(dataname, JSON.stringify(data));
-      } 
-      formdata.append('data', JSON.stringify(data));
-      console.log(formdata.get('data'));
-      return this.httprequest.post<any>(url, formdata,this.httpOptions );
+      } else {
+        formdata.append('data', JSON.stringify(data));
+      }
+      // console.log(formdata.get('data'));
+      return this.httprequest.post<any>(url, formdata, this.httpOptions);
     } else if (type == 'get') {
       return this.httprequest.get<any>(url, this.httpOptions);
     }

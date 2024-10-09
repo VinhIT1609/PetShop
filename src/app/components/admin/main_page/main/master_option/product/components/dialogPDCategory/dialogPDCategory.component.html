@@ -1,0 +1,46 @@
+<div class="modal" [class.open]="isOpenForm" (click)="toggleShowOverlay()">
+  <div class="modal_container_form_addsp" (click)="propagation($event)">
+    <div class="modal_close_btn" (click)="toggleShowOverlay()">X</div>
+    <header class="modal_header">
+      <i class="header_icon ti-package"></i>
+      {{ title }}
+    </header>
+    <div class="modal_body">
+      <div class="modal-fields">
+        <div class="modal-label">Code :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter Category Code ..."
+          [(ngModel)]="ProductCategory.CategoryCode"
+        ></app-input-custom>
+      </div>
+      <div class="modal-fields">
+        <div class="modal-label">Name :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter Name ..."
+          [(ngModel)]="ProductCategory.Name"
+        ></app-input-custom>
+      </div>
+      <div class="modal-fields">
+        <div class="modal-label">Address :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter Address ..."
+          [(ngModel)]="ProductCategory.Address"
+        ></app-input-custom>
+      </div>
+      <div class="dialogButton">
+        <button class="button-36" role="button" (click)="addORupdate()">
+          <p>{{ buttonContent }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

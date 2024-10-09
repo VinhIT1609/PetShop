@@ -1,7 +1,10 @@
 .header {
   padding: 0;
-  background-color: grey;
+  background-color: #ffff;
   height: 60px;
+  border-radius: var(--border-radius-container);
+  box-shadow: var(--shadow);
+  margin-bottom: 10px;
 }
 .avatar{
   display: flex;

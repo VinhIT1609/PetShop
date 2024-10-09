@@ -1,0 +1,120 @@
+.list-group-item {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.list-group-item {
+  display: flex;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.menuItem {
+  width: 100px;
+  font-weight: 600;
+}
+.list-group-item:hover {
+  background-color: #2fa4c8;
+  border-color: #2fa4c8;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.actived {
+  background-color: #2fa4c8;
+  border-color: #2fa4c8;
+  transition: 0.5s;
+}
+.box_content {
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+/* new menu CSS */
+.menu_component {
+  display: flex;
+  flex-direction: column;
+  padding: 0px 5px;
+  gap: 2px;
+}
+.menu_buttons {
+  transition: 0.5s;
+  position: relative;
+  text-align: start;
+  display: flex;
+  vertical-align: middle;
+  background-color: #eeeeee;
+  gap: 10px;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 10px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.menu_buttons:hover {
+  transition: 0.3s;
+  background-color: #bdbdbd;
+  cursor: pointer;
+}
+
+.menu_icons {
+  width: fit-content;
+  height: 100%;
+  line-height: 45px;
+  font-size: 30px;
+}
+/* sub-menu */
+.sub_menu {
+  display: none;
+}
+
+.sub_menu ul {
+  list-style-type: none;
+  font-weight: 500;
+}
+
+.sub_menu li {
+  display: flex;
+  text-align: start;
+  line-height: 40px;
+  padding-left:40px;
+  gap: 10px;
+  border-radius: 10px;
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+.sub_menu li:hover {
+  background-color: #607d8b;
+  cursor: pointer;
+}
+
+.sub_menu_li_actived {
+  background-color: #546e7a;
+}
+
+.showSubmenu {
+  display: block;
+}
+
+.arrow_icons {
+  position: absolute;
+  right: 0;
+  line-height: 50px;
+  font-size: 30px;
+  font-weight: 500;
+  transition: 0.1s;
+}
+
+.change_arrow_direction_down {
+  transition: 0.1s;
+  transform: rotate(90deg);
+}
+
+.submenu_icons {
+  line-height: 38px;
+}

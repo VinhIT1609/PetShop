@@ -1,0 +1,26 @@
+<div class="button-pagination">
+  <div class="cbb-component">
+    <cbb-custom
+      [dataInput]="itemPerPages"
+      [displayName]="'number'"
+      [value]="'number'"
+      [placeholder]="itemPerPages[0]['number']"
+      (outputItemChange)="onItemPerPageChange_pagination($event)"
+    ></cbb-custom>
+  </div>
+  <div class="page">Page {{ currentPage }} of {{ totalPages }}</div>
+  <button
+    class="button material-symbols-outlined"
+    [disabled]="currentPage == 1"
+    (click)="buttonClicked('previous')"
+  >
+    chevron_left
+  </button>
+  <button
+    class="button material-symbols-outlined"
+    [disabled]="currentPage == totalPages"
+    (click)="buttonClicked('next')"
+  >
+    chevron_right
+  </button>
+</div>
