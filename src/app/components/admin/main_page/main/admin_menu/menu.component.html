@@ -1,34 +1,9 @@
 <div class="menu_component text-center noSelect">
-  <!-- <ul class="list-group">
-    <li
-      *ngFor="let menuItem of menuItems; let idx = index"
-      class="list-group-item"
-      [class.isActive]="isActive"
-      (click)="handleClick(idx)"
-      [ngClass]="{ actived: activedItem === idx }"
-      [routerLink]="menuItem === 'Home' ? '' : menuItem"
-    >
-      <a class="box_content">
-        <div class="material-symbols-outlined iconMenu">
-          {{ iconItems[idx] }}
-        </div>
-        <div class="menuItem">{{ menuItem.toUpperCase() }}</div>
-        <div class="material-symbols-outlined arrow">chevron_right</div>
-      </a>
-    </li>
-
-    <li class="list-group-item" (click)="backtoMainPage()">
-      <div class="box_content">
-        <div class="material-symbols-outlined">move_item</div>
-        <div class="menuItem">Home Page</div>
-      </div>
-    </li>
-  </ul> -->
   <!--HTML của Menu mới -->
   <ng-container *ngFor="let button of menuButtons; let idx_button = index">
     <ng-container *ngFor="let icon of menuIcons; let idx_icon = index">
       <ng-container *ngIf="idx_button === idx_icon">
-        <div class="menu_buttons" (click)="activeButton(idx_button)">
+        <div class="menu_buttons" (click)="redirectRoute(idx_button)">
           <div class="material-symbols-outlined menu_icons">{{ icon }}</div>
           {{ button }}
           <ng-container *ngIf="idx_button !== 0">
@@ -40,16 +15,16 @@
       </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="button === menuButtons[1]">
+    <!-- <ng-container *ngIf="button === menuButtons[1]">
       <ng-container *ngTemplateOutlet="PetManagment"></ng-container>
     </ng-container>
     <ng-container *ngIf="button === menuButtons[2]">
       <ng-container *ngTemplateOutlet="ProductManagement"></ng-container>
-    </ng-container>
+    </ng-container> -->
   </ng-container>
 
   <!-- danh sách templates -->
-  <ng-template #PetManagment>
+  <!-- <ng-template #PetManagment>
     <div class="sub_menu" [class.showSubmenu]="isActive_Submenu_Pet">
       <ul>
         <ng-container *ngFor="let content of subMenu_Pet; let idx = index">
@@ -87,5 +62,5 @@
         </ng-container>
       </ul>
     </div>
-  </ng-template>
+  </ng-template> -->
 </div>

@@ -156,11 +156,12 @@ export class TableCustomComponent implements OnInit {
         this.callForm.emit({ button, fromTable, item });
         break;
       case 'DELETE':
-        switch (fromTable) {
-          case 'Product Data':
-            this.callForm.emit({ button, removeItemList: this.removeItemList });
-            break;
-        }
+        this.callForm.emit({
+          button,
+          fromTable,
+          removeItemList: this.removeItemList,
+        });
+        this.removeItemList = [];
     }
   }
   // xử lý thẻ td chứ checkbox và checkbox.
@@ -179,7 +180,6 @@ export class TableCustomComponent implements OnInit {
   // hàm add xử lý add vào danh sách remove
   addToRemove(obj: any) {
     const deleteButton = document.querySelector('.deleteButton');
-
     if (!this.removeItemList.includes(obj)) {
       this.removeItemList.push(obj);
     } else {
@@ -190,6 +190,7 @@ export class TableCustomComponent implements OnInit {
       deleteButton?.classList.remove('disabledDelete');
     } else {
       deleteButton?.classList.add('disabledDelete');
+      console.log('add');
     }
   }
 }

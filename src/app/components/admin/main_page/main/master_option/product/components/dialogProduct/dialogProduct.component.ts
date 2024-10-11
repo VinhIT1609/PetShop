@@ -19,6 +19,26 @@ export class DialogProductComponent implements OnInit {
   btnContent: string = 'CONFIRM';
   @Output() callReloadTable_Product_Dialog: EventEmitter<any> =
     new EventEmitter<any>();
+  // value cbb
+  dataCategory: any[] = [];
+  // temp data for form
+  dataStatus: any[] = [
+    {
+      id: 1,
+      status: 'Active',
+      value: true,
+    },
+    {
+      id: 2,
+      status: 'Deactive',
+      value: false,
+    },
+    {
+      id: 3,
+      status: 'Disabled',
+      value: false,
+    },
+  ];
   // Object
   productObject: any = {
     ProductCode: '',
@@ -54,11 +74,13 @@ export class DialogProductComponent implements OnInit {
       this.formTitle = this.titleArray[0];
       this.btnContent = this.btnContentArr[0];
       this.isOpenForm = !this.isOpenForm;
+      this.bindCbbData('ProductCategory');
       this.clearProductData();
     } else {
       this.isEdit = true;
       this.formTitle = this.titleArray[1];
       this.btnContent = this.btnContentArr[1];
+      this.bindCbbData('ProductCategory');
       this.bindProductData(value);
       this.isOpenForm = !this.isOpenForm;
     }
@@ -125,7 +147,7 @@ export class DialogProductComponent implements OnInit {
 
   removeProduct(listProduct: any[]) {
     console.log(listProduct);
-    const tempList: any[] = [];
+    let tempList: any[] = [];
     listProduct.forEach((product) => {
       tempList.push(product.ProductID);
     });
@@ -152,6 +174,15 @@ export class DialogProductComponent implements OnInit {
       this.addProduct();
     }
   }
+  bindCbbData(data_name: string) {
+    this.apiservice.Call_API(data_name, 'get')?.subscribe((data) => {
+      this.dataCategory = data;
+      this.dataCategory = this.dataCategory.filter(
+        (cate) => cate.StatusID !== 3
+      );
+      console.log(this.dataCategory);
+    });
+  }
   // call Notification Service
   sendSucess(title: string, msg: string, time: number) {
     this.noti.success(title, msg, 3000);
@@ -162,27 +193,4 @@ export class DialogProductComponent implements OnInit {
   sendWarning(title: string, msg: string, time: number) {
     this.noti.warning(title, msg, 3000);
   }
-  // temp data for form
-  dataStatus: any[] = [
-    {
-      id: 1,
-      status: 'Active',
-      value: true,
-    },
-    {
-      id: 2,
-      status: 'Deactive',
-      value: false,
-    },
-    {
-      id: 3,
-      status: 'Disabled',
-      value: false,
-    },
-  ];
-  dataCategory: any[] = [
-    { id: 1, name: 'Food Company', value: 'food_company' },
-    { id: 2, name: 'Toy Company', value: 'toy_company' },
-    { id: 3, name: 'Healthy Company', value: 'healthy_company' },
-  ];
 }

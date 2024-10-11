@@ -27,11 +27,12 @@ export class MasterProductComponent implements OnInit {
   listIdString?: string;
   tagList: string[] = ['Product List', 'Product Category'];
   // value display tag
-  isDisplay: boolean = true;
+  isDisplay: string = 'Product';
   //table value khai báo để dùng table custom
   tableProduct: string = 'Product Data';
   productColumns: any[] = [
     { Head: 'Image', FieldName: 'Image' },
+    { Head: 'Product Code', FieldName: 'ProductCode' },
     { Head: 'Product Name', FieldName: 'ProductName' },
     { Head: 'Category', FieldName: 'Name' },
     { Head: 'Quantity', FieldName: 'Quantity' },
@@ -41,8 +42,9 @@ export class MasterProductComponent implements OnInit {
   tableProductCategory: string = 'Product Category';
   productCategoryColumns: any[] = [
     { Head: 'CategoryID', FieldName: 'CategoryID' },
+    { Head: 'Code', FieldName: 'CategoryCode' },
     { Head: 'Category Name', FieldName: 'Name' },
-    { Head: 'Address', FieldName: 'Address' },
+    { Head: 'Status', FieldName: 'StatusID' },
   ];
 
   // reload
@@ -82,7 +84,15 @@ export class MasterProductComponent implements OnInit {
         }
         break;
       case 'DELETE':
-        this.dialog.removeProduct(value.removeItemList);
+        console.log('delete', value.fromTable);
+        switch (value.fromTable) {
+          case 'Product Data':
+            this.dialog.removeProduct(value.removeItemList);
+            break;
+          case 'Product Category':
+            this.dialogCate.removeProductCategory(value.removeItemList);
+            break;
+        }
         break;
     }
   }
@@ -96,10 +106,10 @@ export class MasterProductComponent implements OnInit {
   handleTag(tag: any) {
     switch (tag) {
       case this.tagList[0]:
-        this.isDisplay = true;
+        this.isDisplay = 'Product';
         break;
       case this.tagList[1]:
-        this.isDisplay = false;
+        this.isDisplay = 'ProductCategory';
         break;
     }
   }

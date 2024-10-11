@@ -1,0 +1,25 @@
+.tag_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 20px;
+  padding: 20px 20px 0 20px;
+}
+
+.tag {
+  transition: 0.3s;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: var(--border-radius-container);
+  background-color: #ff5252;
+  text-align: center;
+}
+.tag:hover {
+  transition: 0.3s;
+  background-color: #ff8a80;
+  cursor: pointer;
+}
+.display {
+  display: none;
+}

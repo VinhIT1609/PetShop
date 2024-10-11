@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { clear } from 'node:console';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ApiServicesService } from '../../../../../../../../services/api-services.service';
+import { NotificationService } from '../../../../../../../../services/notification.service';
 
 @Component({
   selector: 'app-dialogPDCategory',
@@ -15,14 +16,37 @@ export class DialogPDCategoryComponent implements OnInit {
   title: string = '';
   buttonContentList: string[] = ['CONFIRM', 'UPDATE CATEGORY'];
   buttonContent: string = '';
-  constructor() {}
+  // output
+  @Output() callReloadTable_ProductCategory_Dialog: EventEmitter<any> =
+    new EventEmitter();
+  constructor(
+    private apiService: ApiServicesService,
+    private notification: NotificationService
+  ) {}
   ngOnInit() {}
   // object
   ProductCategory: any = {
     CategoryCode: '',
     Name: '',
-    Address: '',
+    StatusID: '',
   };
+  dataStatus: any[] = [
+    {
+      id: 1,
+      status: 'Active',
+      value: true,
+    },
+    {
+      id: 2,
+      status: 'Deactive',
+      value: false,
+    },
+    {
+      id: 3,
+      status: 'Disabled',
+      value: false,
+    },
+  ];
   clearObject() {
     for (let key in this.ProductCategory) {
       if (this.ProductCategory.hasOwnProperty(key)) {
@@ -31,6 +55,7 @@ export class DialogPDCategoryComponent implements OnInit {
     }
   }
   bindObject(value?: any) {
+    this.ProductCategory['CategoryID'] = value['CategoryID'];
     for (let key in value) {
       if (this.ProductCategory.hasOwnProperty(key)) {
         if (key != 'CategoryID') {
@@ -60,12 +85,71 @@ export class DialogPDCategoryComponent implements OnInit {
   propagation(event: Event) {
     event.stopPropagation();
   }
+  addProductCategory() {
+    this.apiService
+      .Call_API(
+        'ProductCategory/AddProductCategory',
+        'post',
+        null,
+        this.ProductCategory
+      )
+      ?.subscribe((x) => {
+        if (x[0]['result'] == 1) {
+          this.notification.success('ADD', 'Thêm thành công !', 3000);
+          this.reloadData();
+          this.isOpenForm = !this.isOpenForm;
+        } else {
+          this.notification.error('ERROR', 'Thêm thất bạn', 3000);
+        }
+      });
+  }
+  updateProductCategory() {
+    this.apiService
+      .Call_API(
+        'ProductCategory/UpdateProductCategory',
+        'post',
+        null,
+        this.ProductCategory
+      )
+      ?.subscribe((x) => {
+        if (x[0]['result'] == 1) {
+          this.notification.success('UPDATE', 'Cập nhật thành công !', 3000);
+          this.reloadData();
+          // this.isOpenForm = !this.isOpenForm;
+        } else {
+          this.notification.error('UPDATE', 'Cập nhật thất bại !', 3000);
+        }
+      });
+  }
 
+  removeProductCategory(listProductCategory: any[]) {
+    // console.log(listProductCategory);
+    let tempList: any[] = [];
+    listProductCategory.forEach((productCategory) => {
+      tempList.push(productCategory.CategoryID);
+    });
+    this.apiService
+      .Call_API(
+        'ProductCategory/DeleteProductCategory',
+        'post',
+        null,
+        tempList.toString()
+      )
+      ?.subscribe((x) => {
+        if (x[0]['result'] == 1) {
+          this.notification.success('UPDATE', 'Xoa thành công !', 3000);
+          this.reloadData();
+        }
+      });
+  }
+  reloadData() {
+    this.callReloadTable_ProductCategory_Dialog.emit('reload table');
+  }
   addORupdate() {
     if (this.isEdit) {
-      console.log('update');
+      this.updateProductCategory();
     } else {
-      console.log('add');
+      this.addProductCategory();
     }
   }
 }

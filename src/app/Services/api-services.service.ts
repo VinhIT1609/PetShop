@@ -30,7 +30,7 @@ export class ApiServicesService {
       } else {
         formdata.append('data', JSON.stringify(data));
       }
-      // console.log(formdata.get('data'));
+      console.warn(formdata.get('data'));
       return this.httprequest.post<any>(url, formdata, this.httpOptions);
     } else if (type == 'get') {
       return this.httprequest.get<any>(url, this.httpOptions);

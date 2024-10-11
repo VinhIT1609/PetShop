@@ -58,63 +58,71 @@ export class MenuComponent {
     this.router.navigate(['/MainPage']);
   }
 
-  activeButton(index: any) {
-    let arrow_icons = document.querySelectorAll('.arrow_icons');
-    switch (index) {
-      case 1:
-        this.isActive_Submenu_Pet = !this.isActive_Submenu_Pet;
-        if (
-          arrow_icons[index - 1].classList.contains(
-            'change_arrow_direction_down'
-          )
-        ) {
-          arrow_icons[index - 1].classList.remove(
-            'change_arrow_direction_down'
-          );
-        } else {
-          arrow_icons[index - 1].classList.add('change_arrow_direction_down');
-        }
-        break;
-      case 2:
-        this.isActive_Submenu_Product = !this.isActive_Submenu_Product;
-        if (
-          arrow_icons[index - 1].classList.contains(
-            'change_arrow_direction_down'
-          )
-        ) {
-          arrow_icons[index - 1].classList.remove(
-            'change_arrow_direction_down'
-          );
-        } else {
-          arrow_icons[index - 1].classList.add('change_arrow_direction_down');
-        }
-        break;
-    }
-  }
+  // activeButton(index: any) {
+  //   let arrow_icons = document.querySelectorAll('.arrow_icons');
+  //   switch (index) {
+  //     case 1:
+  //       this.isActive_Submenu_Pet = !this.isActive_Submenu_Pet;
+  //       if (
+  //         arrow_icons[index - 1].classList.contains(
+  //           'change_arrow_direction_down'
+  //         )
+  //       ) {
+  //         arrow_icons[index - 1].classList.remove(
+  //           'change_arrow_direction_down'
+  //         );
+  //       } else {
+  //         arrow_icons[index - 1].classList.add('change_arrow_direction_down');
+  //       }
+  //       break;
+  //     case 2:
+  //       this.isActive_Submenu_Product = !this.isActive_Submenu_Product;
+  //       if (
+  //         arrow_icons[index - 1].classList.contains(
+  //           'change_arrow_direction_down'
+  //         )
+  //       ) {
+  //         arrow_icons[index - 1].classList.remove(
+  //           'change_arrow_direction_down'
+  //         );
+  //       } else {
+  //         arrow_icons[index - 1].classList.add('change_arrow_direction_down');
+  //       }
+  //       break;
+  //   }
+  // }
 
-  activeSubmenu_Li(index: any, subMenu: any) {
-    switch (subMenu) {
-      case 'pet':
-        document
-          .querySelector('.sub_menu_li_actived')
-          ?.classList.remove('sub_menu_li_actived');
-        this.activedLi_Pet = index;
-        break;
-      case 'product':
-        document
-          .querySelector('.sub_menu_li_actived')
-          ?.classList.remove('sub_menu_li_actived');
-        this.activedLi_Product = index;
-        // route qua các master
-        if (index == 0) {
-          this.redirectRoute('Product');
-        }
-        break;
-    }
-  }
+  // activeSubmenu_Li(index: any, subMenu: any) {
+  //   switch (subMenu) {
+  //     case 'pet':
+  //       document
+  //         .querySelector('.sub_menu_li_actived')
+  //         ?.classList.remove('sub_menu_li_actived');
+  //       this.activedLi_Pet = index;
+  //       break;
+  //     case 'product':
+  //       document
+  //         .querySelector('.sub_menu_li_actived')
+  //         ?.classList.remove('sub_menu_li_actived');
+  //       this.activedLi_Product = index;
+  //       // route qua các master
+  //       if (index == 0) {
+  //         this.redirectRoute('Product');
+  //       }
+  //       break;
+  //   }
+  // }
 
   //hàm chuyển hướng route
-  redirectRoute(route: string) {
-    this.router.navigate(['Admin/' + route]);
+  redirectRoute(index: number) {
+    console.log(index);
+    switch (index) {
+      case 1:
+        this.router.navigate(['Admin/Pet']);
+        break;
+      case 2:
+        this.router.navigate(['Admin/Product']);
+        break;
+    }
   }
 }
