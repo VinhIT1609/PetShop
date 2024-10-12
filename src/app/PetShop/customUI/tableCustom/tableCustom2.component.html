@@ -1,0 +1,264 @@
+<div class="table_with_pagination_component">
+  <div class="header-table-custom">
+    <div class="table-name">
+      {{ tableName }}
+    </div>
+    <div class="table-box-button noSelect">
+      <ng-container *ngFor="let button of buttons">
+        <div
+          class="buttons"
+          [ngClass]="{
+            deleteButton: button['name'] === 'DELETE',
+            disabledDelete: button['name'] == 'DELETE',
+            addButton: button['name'] === 'ADD'
+          }"
+          [ngStyle]="{ 'background-color': button['color'] }"
+          (click)="handleClick(button.name, tableName, removeItemList)"
+        >
+          <div class="buttons-icon material-symbols-outlined">
+            {{ button["icon"] }}
+          </div>
+          <div class="buttons-name">{{ button["name"] }}</div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="box-table">
+    <div class="search-box">
+      <label>Search: </label>
+      <app-input-custom
+        [placeholderInput]="'Enter Name, Category ...'"
+        [typeInput]="'text'"
+        [fontSizeInput]="'18px'"
+        (keyDown_Enter)="keyDown_Enter($event)"
+        [(ngModel)]="inputValue"
+      ></app-input-custom>
+      <button
+        type="button"
+        class="material-symbols-outlined button_search"
+        (click)="searchOnTable()"
+      >
+        search
+      </button>
+    </div>
+    <div class="table-scroll">
+      <table class="tableCustom">
+        <thead>
+          <tr class="table_head">
+            <th
+              class=""
+              style="
+                border: 2px solid rgb(132, 132, 132);
+                background-color: #ccc;
+              "
+            ></th>
+            <ng-container *ngFor="let column of columnsView">
+              <th class="table_thead_cells">{{ column["Head"] }}</th>
+            </ng-container>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let obj of paginatedData">
+            <tr
+              class="tbody_rows"
+              (click)="handleClick('UPDATE', tableName, obj)"
+            >
+              <td
+                class="row_check_box"
+                (click)="toggleChk($event, obj)"
+                [ngClass]="{ disabledTD: obj.StatusID === 3 }"
+              >
+                <ng-container>
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    [disabled]="obj.StatusID === 3"
+                    (click)="$event.stopPropagation()"
+                    (change)="handleChk(obj)"
+                  />
+                </ng-container>
+              </td>
+              <ng-container *ngFor="let column of columnsView">
+                <td class="table_tbody_cells">
+                  <ng-container *ngIf="column['template'] == null">
+                    {{ obj[column["FieldName"]] }}
+                  </ng-container>
+                  <ng-container *ngIf="column['template'] != null">
+                    <ng-container
+                      *ngTemplateOutlet="
+                        column['template'];
+                        context: { $implicit: obj }
+                      "
+                    ></ng-container>
+                  </ng-container>
+                </td>
+                <!-- templateOutLet -->
+                <!-- product table template start-->
+                <ng-template #productStatus>
+                  <ng-container [ngSwitch]="obj[column['FieldName']]">
+                    <div
+                      *ngSwitchCase="1"
+                      style="
+                        background-color: greenyellow;
+                        color: white;
+                        width: 100%;
+                        height: 80%;
+                        border-radius: 50px;
+                        font-weight: 700;
+                      "
+                    >
+                      Active
+                    </div>
+                    <div
+                      *ngSwitchCase="2"
+                      style="
+                        background-color: red;
+                        color: white;
+                        width: 100%;
+                        height: 80%;
+                        border-radius: 50px;
+                        font-weight: 700;
+                      "
+                    >
+                      Deactive
+                    </div>
+                    <div
+                      *ngSwitchCase="3"
+                      style="
+                        background-color: rgb(158, 174, 49);
+                        color: white;
+                        width: 100%;
+                        height: 80%;
+                        border-radius: 50px;
+                        font-weight: 700;
+                      "
+                    >
+                      Disabled
+                    </div>
+                  </ng-container>
+                </ng-template>
+                <ng-template #productName>
+                  <span style="font-size: 16px; color: black; font-weight: 500">
+                    {{ obj[column["FieldName"]] }}
+                  </span>
+                </ng-template>
+                <ng-template #productPrice>
+                  <span style="font-size: 18px; color: black; font-weight: 500">
+                    {{ formatMoney(obj[column["FieldName"]]) }}
+                  </span>
+                </ng-template>
+                <ng-template #productQuantity>
+                  <span style="font-size: 18px; color: black; font-weight: 500">
+                    {{ obj[column["FieldName"]] }}
+                  </span>
+                </ng-template>
+                <!-- product table template end-->
+                <!-- product category template start -->
+                <ng-template #productCategoryStatus>
+                  <ng-container [ngSwitch]="obj[column['FieldName']]">
+                    <div
+                      *ngSwitchCase="1"
+                      style="
+                        background-color: greenyellow;
+                        color: white;
+                        width: 100%;
+                        height: 80%;
+                        border-radius: 50px;
+                        font-weight: 700;
+                      "
+                    >
+                      Active
+                    </div>
+                    <div
+                      *ngSwitchCase="2"
+                      style="
+                        background-color: red;
+                        color: white;
+                        width: 100%;
+                        height: 80%;
+                        border-radius: 50px;
+                        font-weight: 700;
+                      "
+                    >
+                      Deactive
+                    </div>
+                    <div
+                      *ngSwitchCase="3"
+                      style="
+                        background-color: rgb(158, 174, 49);
+                        color: white;
+                        width: 100%;
+                        height: 80%;
+                        border-radius: 50px;
+                        font-weight: 700;
+                      "
+                    >
+                      Disabled
+                    </div>
+                  </ng-container>
+                </ng-template>
+
+                <!-- product category template end -->
+              </ng-container>
+            </tr>
+          </ng-container>
+          <ng-container
+            *ngFor="let row of emptyRow(paginatedData.length, itemPerPage)"
+          >
+            <tr>
+              <td class="row_check_box">
+                <input type="checkbox" name="" id="" disabled />
+              </td>
+              <ng-container *ngFor="let column of columnsView">
+                <td class="table_tbody_cells"></td>
+              </ng-container>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- phân trang cho table custome -->
+    <app-pagination
+      [totalItems]="dataTable.length"
+      [(currentPage)]="currentPage"
+      (onClick)="changePage($event)"
+      (changeItemPerPage)="onChangeItemPerPage_TableCustom($event)"
+      (currentPageChange)="onChangeCurrentPage_TableCustom($event)"
+    ></app-pagination>
+  </div>
+</div>
+<!-- <table>
+  <thead>
+      <td></td>
+  </thead>
+  <tbody>
+      <tr *ngFor="let i of items">
+        <ng-container ngi>
+
+        </ng-container>
+      </tr>
+  </tbody>
+</table>
+
+
+
+
+<custom-table [ColumnFields] [ColumnTemplate] = "">
+
+</custom-table>
+
+
+<ng-container [ngTemplateOutlet]="" con></ng-container>
+
+let columns = [
+    {
+      field: 
+      template: vied
+    }
+]
+@viewcild
+<ng-template #column1>
+asdfskdnfoehifoewf
+  ></ng-template> -->

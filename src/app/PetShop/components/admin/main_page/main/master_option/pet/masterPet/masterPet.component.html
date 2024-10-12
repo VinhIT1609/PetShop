@@ -1,0 +1,13 @@
+<div class="tag_container noSelect">
+  <ng-container *ngFor="let tag of tagList">
+    <div class="tag" (click)="handleTag(tag)">{{ tag }}</div>
+  </ng-container>
+</div>
+<app-tableCustom
+  [API_NAME]="'Pet'"
+  [tableName]="'Pet Data'"
+  [displayButtons]="'ADD, DELETE'"
+  [columnsView]="petColumns"
+  [(isReload_Table)]="isReload_Master"
+  (callForm)="callForm_Pet($event)"
+></app-tableCustom>

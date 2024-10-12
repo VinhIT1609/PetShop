@@ -1,0 +1,46 @@
+<div class="modal" [class.open]="isOpenForm" (click)="toggleShowOverlay()">
+  <div class="modal_container_form_addsp" (click)="propagation($event)">
+    <div class="modal_close_btn" (click)="toggleShowOverlay()">X</div>
+    <header class="modal_header">
+      <i class="header_icon ti-package"></i>
+      {{ title }}
+    </header>
+    <div class="modal_body">
+      <div class="modal-fields">
+        <div class="modal-label">Code :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter Category Code ..."
+          [(ngModel)]="Pet.CategoryCode"
+        ></app-input-custom>
+      </div>
+      <div class="modal-fields">
+        <div class="modal-label">Name :</div>
+        <app-input-custom
+          class="form_input"
+          typeInput="text"
+          [fontSizeInput]="fontSize"
+          placeholderInput="Enter Name ..."
+          [(ngModel)]="Pet.Name"
+        ></app-input-custom>
+      </div>
+      <div class="cbb_form model-fields" style="z-index: 1000">
+        <div class="modal-label">Category :</div>
+        <cbb-custom
+          class="cbb-add-form"
+          [dataInput]="dataStatus"
+          [displayName]="'status'"
+          [value]="'id'"
+          [(outputItem)]="Pet.StatusID"
+        ></cbb-custom>
+      </div>
+      <div class="dialogButton">
+        <button class="button-36" role="button" (click)="addORupdate()">
+          <p>{{ buttonContent }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

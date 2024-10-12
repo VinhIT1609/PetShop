@@ -1,0 +1,118 @@
+<!-- header -->
+<!-- <div class="headerBox">
+  <div class="headerMaster">PRODUCT MANAGE</div>
+  <div class="buttonBox">
+    <div class="btnInBox add" (click)="addNewPD()">
+      <div class="material-symbols-outlined icon">add</div>
+      <div class="btn_content"><b>THÊM</b></div>
+    </div>
+    <div
+      class="btnInBox noSelect remove"
+      [class.InActive]="isActiveButtonRemove"
+      (click)="removeProduct()"
+    >
+      <div class="material-symbols-outlined icon">delete</div>
+      <div class="btn_content"><b>XÓA</b></div>
+    </div>
+  </div>
+</div> -->
+<!-- header -->
+
+<div class="tag_container noSelect">
+  <ng-container *ngFor="let tag of tagList">
+    <div class="tag" (click)="handleTag(tag)">{{ tag }}</div>
+  </ng-container>
+</div>
+
+<!-- table view start-->
+<ng-container [ngSwitch]="isDisplay">
+  <ng-container *ngSwitchCase="'Product'">
+    <ng-template [ngTemplateOutlet]="Product"></ng-template>
+  </ng-container>
+  <ng-container *ngSwitchCase="'ProductCategory'">
+    <ng-template [ngTemplateOutlet]="ProductCategory"></ng-template>
+  </ng-container>
+</ng-container>
+
+<ng-template #ProductCategory>
+  <app-tableCustom
+    id="tableProductCategory"
+    [tableName]="tableProductCategory"
+    [API_NAME]="'ProductCategory'"
+    [columnsView]="productCategoryColumns"
+    [displayButtons]="'ADD,DELETE'"
+    (callForm)="callForm_Product($event)"
+    [(isReload_Table)]="isReload_Master"
+  ></app-tableCustom>
+</ng-template>
+<ng-template #Product>
+  <app-tableCustom
+    id="tableProduct"
+    [tableName]="tableProduct"
+    [API_NAME]="'Product'"
+    [columnsView]="productColumns"
+    [displayButtons]="'ADD,DELETE'"
+    (callForm)="callForm_Product($event)"
+    [(isReload_Table)]="isReload_Master"
+  ></app-tableCustom>
+</ng-template>
+
+<!-- table view end -->
+
+<!-- form add san pham start -->
+<app-dialogProduct
+  #dialog
+  (callReloadTable_Product_Dialog)="callReloadTable_Master_Product($event)"
+></app-dialogProduct>
+<app-dialogPDCategory
+  #dialogPDCate
+  (callReloadTable_ProductCategory_Dialog)="
+    callReloadTable_Master_Product($event)
+  "
+></app-dialogPDCategory>
+<!-- form add san pham end-->
+<!-- form chi tiet san pham -->
+
+<ng-template #statusColumn let-data>
+  <ng-container [ngSwitch]="data.StatusID">
+  <div
+    *ngSwitchCase="1"
+    style="
+      background-color: greenyellow;
+      color: white;
+      width: 100%;
+      height: 80%;
+      border-radius: 50px;
+      font-weight: 700;
+    "
+  >
+    Active
+  </div>
+  <div
+    *ngSwitchCase="2"
+    style="
+      background-color: red;
+      color: white;
+      width: 100%;
+      height: 80%;
+      border-radius: 50px;
+      font-weight: 700;
+    "
+  >
+    Deactive
+  </div>
+  <div
+    *ngSwitchCase="3"
+    style="
+      background-color: rgb(158, 174, 49);
+      color: white;
+      width: 100%;
+      height: 80%;
+      border-radius: 50px;
+      font-weight: 700;
+    "
+  >
+    Disabled
+  </div>
+  </ng-container>
+</ng-template>
